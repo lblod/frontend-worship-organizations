@@ -1,0 +1,43 @@
+<AuMainHeader
+  @brandLink="https://www.vlaanderen.be/nl"
+  @homeRoute="index"
+  @appTitle={{config "appName"}}
+  @contactRoute="contact"
+>
+  {{#if this.session.isAuthenticated}}
+    <AuDropdown
+      @title={{this.currentSession.user.firstName}}
+      @buttonLabel="Account settings"
+      @alignment="right"
+      role="menu"
+    >
+      <AuButton
+        @skin="tertiary" role="menuitem"
+        {{on "click" this.logout}}
+      >
+        <AuIcon @icon="logout" @alignment="left" />Afmelden
+      </AuButton>
+    </AuDropdown>
+  {{else}}
+    <Acmidm::Login role="menu" @styles="au-c-button" as |acmidm|>
+      <AuButton
+        @skin="tertiary"
+        role="menuitem"
+        loading={{acmidm.isAuthenticating}}
+        disabled={{acmidm.isAuthenticating}}
+        {{on "click" acmidm.login}}
+      >
+        {{#if acmidm.isAuthenticating}}
+          Aan het aanmelden...
+        {{else}}
+          Aanmelden
+        {{/if}}
+        <AuIcon @icon="login" @alignment="right" />
+      </AuButton>
+
+      {{#if acmidm.errorMessage}}
+        <p>{{acmidm.errorMessage}}</p>
+      {{/if}}
+    </Acmidm::Login>
+  {{/if}}
+</AuMainHeader>

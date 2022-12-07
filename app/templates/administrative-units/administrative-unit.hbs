@@ -1,0 +1,34 @@
+{{page-title this.model.name}}
+{{breadcrumb
+  this.model.name
+  route="administrative-units.administrative-unit"
+  model=this.model.id
+}}
+
+<SidebarContainer>
+  <:sidebar>
+    <div class="au-c-sidebar">
+      <ul class="au-c-list-navigation">
+        <li class="au-c-list-navigation__item">
+          <AuNavigationNestedLink
+            @route="administrative-units.administrative-unit.governing-bodies"
+          >
+            Bestuursorganen
+          </AuNavigationNestedLink>
+        </li>
+        {{#if (eq @model.constructor.modelName "worship-service")}}
+          <li class="au-c-list-navigation__item">
+            <AuNavigationNestedLink
+              @route="administrative-units.administrative-unit.ministers"
+            >
+              Bedienaren
+            </AuNavigationNestedLink>
+          </li>
+        {{/if}}
+      </ul>
+    </div>
+  </:sidebar>
+  <:content>
+    {{outlet}}
+  </:content>
+</SidebarContainer>

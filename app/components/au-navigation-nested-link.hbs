@@ -1,0 +1,9 @@
+<LinkTo
+  @route={{this.route}}
+  @models={{au-link-to-models @model @models}}
+  @query={{this.queryParams}}
+  class="au-c-list-navigation__link" ...attributes
+  {{on "click" this.linkFocus}}
+>
+  {{yield}}
+</LinkTo>

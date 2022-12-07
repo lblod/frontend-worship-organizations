@@ -1,0 +1,160 @@
+<SidebarContainer>
+  <:sidebar>
+    <div class="au-c-sidebar">
+      <div class="au-c-sidebar__content au-o-box">
+        <form {{on "reset" this.resetFilters}} class="au-o-grid au-o-grid--small">
+          <div class="au-o-grid__item au-u-1-2@small au-u-1-1@medium">
+            <AuLabel for="filter-name">Naam</AuLabel>
+              <AdministrativeUnitSelectByName
+                @id="filter-name"
+                @selected={{this.name}}
+                @onChange={{this.setName}}
+                class="grow"
+              />
+          </div>
+          <div class="au-o-grid__item au-u-1-2@small au-u-1-1@medium">
+            <AuLabel for="filter-municipality">Gemeente</AuLabel>
+            <MunicipalitySelect
+              @selected={{this.selectedMunicipality}}
+              @onChange={{this.setMunicipality}}
+              @selectedProvince={{this.province}}
+              @id="filter-municipality"
+            />
+          </div>
+          <div class="au-o-grid__item au-u-1-2@small au-u-1-1@medium">
+            <AuLabel for="filter-province">Provincie</AuLabel>
+            <ProvinceSelect
+              @selected={{this.province}}
+              @onChange={{this.setProvince}}
+              @selectedMunicipality={{this.municipality}}
+              @id="filter-province"
+            />
+          </div>
+          <div class="au-o-grid__item au-u-1-2@small au-u-1-1@medium">
+            <AuLabel for="classification">Type bestuur</AuLabel>
+            <ClassificationSelect
+              @selected={{this.classificationId}}
+              @onChange={{this.setClassificationId}}
+              @allowClear={{true}}
+              @selectedRecognizedWorshipTypeId={{this.recognizedWorshipTypeId}}
+              @id="classification"
+            />
+          </div>
+          {{#if this.modelHasOnlyWorshipAdministrativeUnits}}
+            <div class="au-o-grid__item au-u-1-2@small au-u-1-1@medium">
+              <AuLabel for="recognized-worship-types">Soort eredienst</AuLabel>
+              <RecognizedWorshipTypeSelect
+                @selected={{this.recognizedWorshipTypeId}}
+                @onChange={{this.setRecognizedWorshipTypeId}}
+                @allowClear={{true}}
+                @selectedClassificationId={{this.classificationId}}
+                @id="recognized-worship-types"
+              />
+            </div>
+          {{/if}}
+          <div class="au-o-grid__item au-u-1-2@small au-u-1-1@medium">
+            <AuLabel for="statuses">Status</AuLabel>
+            <OrganizationStatusSelect
+              @selected={{this.organizationStatus}}
+              @onChange={{this.setOrganizationStatus}}
+              @allowClear={{true}}
+              @id="statuses"
+            />
+          </div>
+          <div class="au-o-grid__item">
+            <AuButton
+              @skin="tertiary"
+              type="reset"
+            >
+              <AuIcon @icon="cross" @alignment="left" /> Herstel alle filters
+            </AuButton>
+          </div>
+        </form>
+      </div>
+    </div>
+  </:sidebar>
+  <:content>
+    <AuDataTable
+      @content={{this.administrativeUnits}}
+      @isLoading={{this.showTableLoader}}
+      @page={{this.page}}
+      @size={{this.size}}
+      as |t|
+    >
+      <t.content class="au-c-data-table__table--small" as |c|>
+        <c.header>
+          <AuDataTableThSortable
+            @field="name"
+            @currentSorting={{this.sort}}
+            @label="Naam"
+          />
+          <AuDataTableThSortable
+            @field="classification.label"
+            @currentSorting={{this.sort}}
+            @label="Type bestuur"
+          />
+          {{#if this.modelHasOnlyWorshipAdministrativeUnits}}
+            <AuDataTableThSortable
+              @field="recognizedWorshipType.label"
+              @currentSorting={{this.sort}}
+              @label="Soort eredienst"
+            />
+          {{/if}}
+          <AuDataTableThSortable
+            @field="primarySite.address.province"
+            @currentSorting={{this.sort}}
+            @label="Provincie"
+          />
+          <AuDataTableThSortable
+            @field="primarySite.address.municipality"
+            @currentSorting={{this.sort}}
+            @label="Gemeente"
+          />
+          <AuDataTableThSortable
+            @field="organizationStatus"
+            @currentSorting={{this.sort}}
+            @label="Status"
+          />
+        </c.header>
+        {{#if this.hasErrored}}
+          <TableMessage::Error />
+        {{else if this.hasNoResults}}
+          <TableMessage>
+            <p>
+              Er werden geen zoekresultaten gevonden. Kijk na op spelfouten, of
+              probeer een andere zoekopdracht. Indien een organisatie ontbreekt,
+              meldt dit aan
+              <a
+                class="au-c-link"
+                href="mailto:{{config "contactEmail"}}"
+              >{{config "contactEmail"}}</a>
+            </p>
+          </TableMessage>
+        {{else}}
+          <c.body as |adminUnit|>
+            <td>
+              <LinkTo
+                class="au-c-link"
+                @model={{adminUnit.id}}
+                @route="administrative-units.administrative-unit.index"
+              >
+                {{adminUnit.name}}
+              </LinkTo>
+            </td>
+            <td>{{adminUnit.classification.label}}</td>
+            {{#if this.modelHasOnlyWorshipAdministrativeUnits}}
+              <td>{{adminUnit.recognizedWorshipType.label}}</td>
+            {{/if}}
+            <td>{{adminUnit.primarySite.address.province}}</td>
+            <td>{{adminUnit.primarySite.address.municipality}}</td>
+            <td>
+              {{#if adminUnit.organizationStatus}}
+                <OrganizationStatus  @id={{adminUnit.organizationStatus.id}} @label={{adminUnit.organizationStatus.label}}/>
+              {{/if}}
+            </td>
+          </c.body>
+        {{/if}}
+      </t.content>
+    </AuDataTable>
+  </:content>
+</SidebarContainer>
