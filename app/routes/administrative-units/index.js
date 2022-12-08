@@ -61,9 +61,9 @@ export default class AdministrativeUnitsIndexRoute extends Route {
       query['filter[primary-site][address][province]'] = params.province;
     }
 
-    if (params.recognizedWorshipType) {
+    if (params.recognizedWorshipTypeId) {
       query['filter[recognized-worship-type][:id:]'] =
-        params.recognizedWorshipType;
+        params.recognizedWorshipTypeId;
     }
 
     if (params.organizationStatus) {

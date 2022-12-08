@@ -19,8 +19,16 @@ Router.map(function () {
           { path: '/mandataris/:mandatoryId/' },
           function () {}
         );
-        this.route('minister', { path: '/bedienaar/:ministerId/' });
-        this.route('agent', { path: '/functionaris/:agentId/' });
+        this.route(
+          'minister',
+          { path: '/bedienaar/:ministerId/' },
+          function () {}
+        );
+        this.route(
+          'agent',
+          { path: '/functionaris/:agentId/' },
+          function () {}
+        );
       });
     });
   });

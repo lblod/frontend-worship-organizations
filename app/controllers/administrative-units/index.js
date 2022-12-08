@@ -66,8 +66,9 @@ export default class AdministrativeUnitsIndexController extends Controller {
     if (this.administrativeUnits) {
       return !this.administrativeUnits.toArray().some((adminUnit) => {
         return (
-          adminUnit.classification_id !== CLASSIFICATION_CODE.WORSHIP_SERVICE &&
-          adminUnit.classification_id !==
+          adminUnit.get('classification').get('id') !==
+            CLASSIFICATION_CODE.WORSHIP_SERVICE &&
+          adminUnit.get('classification').get('id') !==
             CLASSIFICATION_CODE.CENTRAL_WORSHIP_SERVICE
         );
       });
