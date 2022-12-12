@@ -15,13 +15,14 @@ export default class MockLoginRoute extends Route {
     this.session.prohibitAuthentication('index');
   }
 
-  async model(params) {
-    let accounts = await this.store.query('account', {
+  model(params) {
+    const filter = { provider: 'https://github.com/lblod/mock-login-service' };
+    if (params.gemeente) filter.user = { 'family-name': params.gemeente };
+    return this.store.query('account', {
       include: 'user.groups',
-      filter: { provider: 'https://github.com/lblod/mock-login-service' },
+      filter: filter,
       page: { size: 10, number: params.page },
+      sort: 'user.family-name',
     });
-
-    return { accounts };
   }
 }
