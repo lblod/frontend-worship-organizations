@@ -108,8 +108,5 @@
   "volta": {
     "node": "16.13.2",
     "npm": "8.3.1"
-  },
-  "dependencies": {
-    "@appuniversum/appuniversum": "^1.2.0"
   }
 }
