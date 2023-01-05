@@ -2,7 +2,7 @@ import Service from '@ember/service';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 
-const READER_ROLES = ['LoketLB-eredienstMandaatGebruiker'];
+const READER_ROLES = ['LoketLB-eredienstOrganisatiesGebruiker'];
 
 export default class CurrentSessionService extends Service {
   @service session;
