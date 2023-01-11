@@ -146,7 +146,10 @@ export default class AdministrativeUnitsIndexController extends Controller {
 
   @action
   setProvince(selection) {
-    this.page = null;
+    // Don't reset pagination if the provincie is set automatically via municipality
+    if (!this.municipality) {
+      this.page = null;
+    }
     if (selection !== null) {
       this.province = selection;
     } else {
