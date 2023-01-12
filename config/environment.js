@@ -58,14 +58,7 @@ module.exports = function (environment) {
     uriInfoServiceUrl: '/uri-info',
 
     userManual: {
-      general:
-        'https://abb-vlaanderen.gitbook.io/handleiding-organisatieportaal',
-      module: {
-        administrativeUnits:
-          'https://abb-vlaanderen.gitbook.io/handleiding-organisatieportaal/modules/bestuurseenheden',
-        people:
-          'https://abb-vlaanderen.gitbook.io/handleiding-organisatieportaal/modules/personen',
-      },
+      general: 'https://abb-vlaanderen.gitbook.io/handleiding-loket',
     },
   };
 

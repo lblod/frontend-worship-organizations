@@ -55,7 +55,6 @@ Router.map(function () {
       });
     }
   );
-  this.route('contact');
   this.route('legal', { path: '/legaal' }, function () {
     this.route('disclaimer');
     this.route('cookiestatement', { path: '/cookieverklaring' });
