@@ -5,7 +5,7 @@
         <AuContent @skin="large">
           <h1>Erediensten Organisaties</h1>
           <p class="au-c-heading au-c-heading--4">Een webapplicatie die helpt met
-            het visualiseren en bewerken van data over besturen van een eredienst
+            het visualiseren van data over besturen van een eredienst
             en personen.</p>
           <p>Lukt het aanmelden niet? Neem contact op met uw interne beheerder.
             Indien er zich een probleem voordoet, contacteer
@@ -56,11 +56,10 @@
               </AuHeading>
             </c.header>
             <c.content>
-              <p>Bekijk en bewerk</p>
+              <p>Bekijk</p>
               <ul>
-                <li>Kerninformatie over besturen</li>
-                <li>Bestuursorganen</li>
-                <li>Documenten en dossiers</li>
+                <li>Bestuursorganen en mandatarissen</li>
+                <li>Bedienaren</li>
               </ul>
             </c.content>
             <c.footer>
@@ -68,36 +67,6 @@
                 <a
                   class="au-c-link au-c-link--secondary"
                   href={{config "userManual.module.administrativeUnits"}}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <AuIcon @icon="manual" @alignment="left" />
-                  Handleiding (externe link)
-                </a>
-              </p>
-            </c.footer>
-          </AuCard>
-        </div>
-        <div class="au-o-grid__item au-u-1-2@small">
-          <AuCard @flex="true" as |c|>
-            <c.header @badgeSkin="brand" @badgeIcon="users">
-              <AuHeading @level="3" @skin="4">
-                Personen
-              </AuHeading>
-            </c.header>
-            <c.content>
-              <p>Bekijk en bewerk</p>
-              <ul>
-                <li>Kerngegevens over personen</li>
-                <li>Contactgegevens</li>
-                <li>Posities</li>
-              </ul>
-            </c.content>
-            <c.footer>
-              <p>
-                <a
-                  href={{config "userManual.module.people"}}
-                  class="au-c-link au-c-link--secondary"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
