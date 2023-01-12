@@ -47,10 +47,6 @@ export default class AdministrativeUnitsIndexController extends Controller {
     );
   }
 
-  get showTableLoader() {
-    return this.isLoading && !this.hasPreviousData;
-  }
-
   get hasNoResults() {
     return (
       this.model.loadAdministrativeUnitsTaskInstance.isFinished &&
