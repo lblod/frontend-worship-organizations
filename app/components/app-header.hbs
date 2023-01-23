@@ -5,7 +5,7 @@
 >
   {{#if this.session.isAuthenticated}}
     <AuDropdown
-      @title={{this.title}}
+      @title={{this.currentSession.title}}
       @buttonLabel="Account settings"
       @alignment="right"
       role="menu"

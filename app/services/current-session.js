@@ -10,6 +10,7 @@ export default class CurrentSessionService extends Service {
 
   @tracked account;
   @tracked user;
+  @tracked title;
   @tracked group;
   @tracked roles;
 
@@ -18,11 +19,11 @@ export default class CurrentSessionService extends Service {
       let sessionData = this.session.data.authenticated.relationships;
       this.roles = this.session.data.authenticated.data?.attributes?.roles;
       let accountId = sessionData.account.data.id;
-
       this.account = await this.store.findRecord('account', accountId, {
         include: 'user',
       });
-      this.user = this.account.user;
+      this.user = await this.account.user;
+      this.title = `${this.user.firstName} ${this.user.familyName}`;
     }
   }
 
