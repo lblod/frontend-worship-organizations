@@ -12,24 +12,16 @@
                 class="grow"
               />
           </div>
-          <div class="au-o-grid__item au-u-1-2@small au-u-1-1@medium">
-            <AuLabel for="filter-municipality">Gemeente</AuLabel>
-            <MunicipalitySelect
-              @selected={{(or this.selectedMunicipality this.municipality)}}
-              @onChange={{this.setMunicipality}}
-              @selectedProvince={{this.province}}
-              @id="filter-municipality"
-            />
-          </div>
-          <div class="au-o-grid__item au-u-1-2@small au-u-1-1@medium">
-            <AuLabel for="filter-province">Provincie</AuLabel>
-            <ProvinceSelect
-              @selected={{this.province}}
-              @onChange={{this.setProvince}}
-              @selectedMunicipality={{this.municipality}}
-              @id="filter-province"
-            />
-          </div>
+          {{#unless this.isLoggedInAsMunicipality}}
+            <div class="au-o-grid__item au-u-1-2@small au-u-1-1@medium">
+              <AuLabel for="filter-municipality">Gemeente</AuLabel>
+              <MunicipalitySelect
+                @selected={{(or this.selectedMunicipality this.municipality)}}
+                @onChange={{this.setMunicipality}}
+                @id="filter-municipality"
+              />
+            </div>
+          {{/unless}}
           <div class="au-o-grid__item au-u-1-2@small au-u-1-1@medium">
             <AuLabel for="classification">Type bestuur</AuLabel>
             <ClassificationSelect

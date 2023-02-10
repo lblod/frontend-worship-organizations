@@ -6,13 +6,14 @@ import { CLASSIFICATION_CODE } from 'frontend-worship-organizations/models/admin
 
 export default class AdministrativeUnitsIndexController extends Controller {
   @service router;
+  @service currentSession;
+
   queryParams = [
     'page',
     'size',
     'sort',
     'name',
     'municipality',
-    'province',
     'classificationId',
     'recognizedWorshipTypeId',
     'organizationStatus',
@@ -23,12 +24,18 @@ export default class AdministrativeUnitsIndexController extends Controller {
   @tracked sort = 'name';
   @tracked name = '';
   @tracked municipality = '';
-  @tracked province = '';
   @tracked classificationId = '';
   @tracked recognizedWorshipTypeId = '';
   @tracked organizationStatus = '';
 
   @tracked selectedMunicipality;
+
+  get isLoggedInAsMunicipality() {
+    return (
+      this.currentSession.groupClassification.id ==
+      CLASSIFICATION_CODE.MUNICIPALITY
+    );
+  }
 
   get administrativeUnits() {
     return this.model.loadAdministrativeUnitsTaskInstance.isFinished
@@ -140,19 +147,6 @@ export default class AdministrativeUnitsIndexController extends Controller {
     }
   }
 
-  @action
-  setProvince(selection) {
-    // Don't reset pagination if the provincie is set automatically via municipality
-    if (!this.municipality) {
-      this.page = null;
-    }
-    if (selection !== null) {
-      this.province = selection;
-    } else {
-      this.province = '';
-    }
-  }
-
   resetPagination() {
     this.page = 0;
   }
@@ -161,7 +155,6 @@ export default class AdministrativeUnitsIndexController extends Controller {
   resetFilters() {
     this.name = '';
     this.municipality = '';
-    this.province = '';
     this.classificationId = '';
     this.recognizedWorshipTypeId = '';
     this.organizationStatus = '';

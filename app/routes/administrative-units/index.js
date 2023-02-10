@@ -8,7 +8,6 @@ export default class AdministrativeUnitsIndexRoute extends Route {
     sort: { refreshModel: true },
     name: { refreshModel: true, replace: true },
     municipality: { refreshModel: true, replace: true },
-    province: { refreshModel: true, replace: true },
     classificationId: { refreshModel: true, replace: true },
     recognizedWorshipTypeId: { refreshModel: true, replace: true },
     organizationStatus: { refreshModel: true, replace: true },
@@ -55,10 +54,6 @@ export default class AdministrativeUnitsIndexRoute extends Route {
     if (params.municipality) {
       query['filter[primary-site][address][:exact:municipality]'] =
         params.municipality;
-    }
-
-    if (params.province) {
-      query['filter[primary-site][address][province]'] = params.province;
     }
 
     if (params.recognizedWorshipTypeId) {
