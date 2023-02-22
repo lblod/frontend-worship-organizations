@@ -29,6 +29,10 @@ export default class OrganizationStatusSelectComponent extends Component {
   }
 
   @task *loadOrganizationStatusesTask() {
-    return yield this.store.findAll('organization-status-code');
+    const statuses = yield this.store.findAll('organization-status-code');
+    // We hide non active besturen
+    return statuses.filter(
+      (status) => status.id != 'd02c4e12bf88d2fdf5123b07f29c9311'
+    );
   }
 }
