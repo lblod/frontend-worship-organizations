@@ -10,6 +10,19 @@
       @alignment="right"
       role="menu"
     >
+      <Acmidm::Switch as |acmidm|>
+        <AuButton
+          @disabled={{acmidm.isSwitching}}
+          @skin="link"
+          @icon="switch"
+          @iconAlignment="left"
+          role="menuitem"
+          {{on "click" acmidm.switch}}
+          {{!template-lint-disable require-context-role}}
+        >
+          Wissel van bestuurseenheid
+        </AuButton>
+      </Acmidm::Switch>
       <AuButton
         @skin="tertiary" role="menuitem"
         {{on "click" this.logout}}
