@@ -12,8 +12,7 @@ export default class PeoplePersonPositionsMandatoryRoute extends Route {
       include: [
         'contacts.contact-address',
         'mandate.role-board',
-        'mandate.governing-body.is-time-specialization-of.classification',
-        'mandate.governing-body.is-time-specialization-of.administrative-unit',
+        'mandate.governing-body.is-time-specialization-of',
       ].join(),
     });
 
