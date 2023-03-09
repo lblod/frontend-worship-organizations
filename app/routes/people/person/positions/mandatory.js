@@ -9,11 +9,6 @@ export default class PeoplePersonPositionsMandatoryRoute extends Route {
 
     let mandatory = await this.store.findRecord('mandatory', mandatoryId, {
       reload: true,
-      include: [
-        'contacts.contact-address',
-        'mandate.role-board',
-        'mandate.governing-body.is-time-specialization-of',
-      ].join(),
     });
 
     return {

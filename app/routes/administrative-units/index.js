@@ -29,7 +29,6 @@ export default class AdministrativeUnitsIndexRoute extends Route {
         'classification',
         'recognized-worship-type',
         'organization-status',
-        'primary-site.address',
       ].join(),
       page: {
         number: params.page,

@@ -15,8 +15,6 @@ export default class AdministrativeUnitsAdministrativeUnitGoverningBodiesRoute e
       administrativeUnitId,
       {
         reload: true,
-        include:
-          'governing-bodies.has-time-specializations,governing-bodies.classification',
       }
     );
 

@@ -9,12 +9,6 @@ export default class PeoplePersonPositionsMinisterRoute extends Route {
 
     let minister = await this.store.findRecord('minister', ministerId, {
       reload: true,
-      include: [
-        'contacts.contact-address',
-        'minister-position.function',
-        'minister-position.worship-service.classification',
-        'financing',
-      ].join(),
     });
 
     return {

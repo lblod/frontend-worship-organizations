@@ -14,10 +14,6 @@ export default class AdministrativeUnitsAdministrativeUnitMinistersRoute extends
       administrativeUnitId,
       {
         reload: true,
-        include: [
-          'minister-positions.function',
-          'minister-positions.held-by-ministers.person',
-        ].join(),
       }
     );
 

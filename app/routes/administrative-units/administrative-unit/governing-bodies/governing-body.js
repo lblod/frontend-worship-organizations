@@ -14,7 +14,6 @@ export default class AdministrativeUnitsAdministrativeUnitGoverningBodiesGoverni
       governingBodyId,
       {
         reload: true,
-        include: 'mandates.role-board,mandates.held-by.governing-alias',
       }
     );
 
