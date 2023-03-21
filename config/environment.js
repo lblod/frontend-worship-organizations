@@ -51,6 +51,7 @@ module.exports = function (environment) {
           scope: '{{OAUTH_API_SCOPE}}',
           redirectUri: '{{OAUTH_API_REDIRECT_URL}}',
           logoutUrl: '{{OAUTH_API_LOGOUT_URL}}',
+          returnUrl: '{{OAUTH_SWITCH_URL}}',
         },
       },
     },
