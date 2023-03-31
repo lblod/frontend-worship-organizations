@@ -59,7 +59,8 @@ module.exports = function (environment) {
     uriInfoServiceUrl: '/uri-info',
 
     userManual: {
-      general: 'https://abb-vlaanderen.gitbook.io/handleiding-loket',
+      general:
+        'https://abb-vlaanderen.gitbook.io/handleiding-loket/erediensten/eredienst-organisaties',
     },
   };
 
