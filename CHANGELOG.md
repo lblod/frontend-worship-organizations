@@ -1,4 +1,14 @@
 
+
+## 1.0.1 (2023-03-31)
+
+#### :rocket: Enhancement
+* [#6](https://github.com/lblod/frontend-worship-organizations/pull/6) Update manual link ([@claire-lovisa](https://github.com/claire-lovisa))
+
+#### Committers: 1
+- Claire Lovisa ([@claire-lovisa](https://github.com/claire-lovisa))
+
+
 ## 1.0.0 (2023-03-29)
 
 #### :rocket: Enhancement
