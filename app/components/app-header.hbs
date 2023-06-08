@@ -10,46 +10,23 @@
       @alignment="right"
       role="menu"
     >
-      <Acmidm::Switch as |acmidm|>
-        <AuButton
-          @disabled={{acmidm.isSwitching}}
-          @skin="link"
-          @icon="switch"
-          @iconAlignment="left"
-          role="menuitem"
-          {{on "click" acmidm.switch}}
-          {{!template-lint-disable require-context-role}}
-        >
-          Wissel van bestuurseenheid
-        </AuButton>
-      </Acmidm::Switch>
-      <AuButton
-        @skin="tertiary" role="menuitem"
-        {{on "click" this.logout}}
+      <AuLink
+        @route="auth.switch"
+        @icon="switch"
+        role="menuitem"
       >
-        <AuIcon @icon="logout" @alignment="left" />Afmelden
-      </AuButton>
+        Wissel van bestuurseenheid
+      </AuLink>
+
+      <AuLink
+        @route="auth.logout"
+        @icon="logout"
+        role="menuitem"
+      >
+        Afmelden
+      </AuLink>
     </AuDropdown>
   {{else}}
-    <Acmidm::Login role="menu" @styles="au-c-button" as |acmidm|>
-      <AuButton
-        @skin="tertiary"
-        role="menuitem"
-        loading={{acmidm.isAuthenticating}}
-        disabled={{acmidm.isAuthenticating}}
-        {{on "click" acmidm.login}}
-      >
-        {{#if acmidm.isAuthenticating}}
-          Aan het aanmelden...
-        {{else}}
-          Aanmelden
-        {{/if}}
-        <AuIcon @icon="login" @alignment="right" />
-      </AuButton>
-
-      {{#if acmidm.errorMessage}}
-        <p>{{acmidm.errorMessage}}</p>
-      {{/if}}
-    </Acmidm::Login>
+    <LoginButton @isCompact={{true}} />
   {{/if}}
 </AuMainHeader>

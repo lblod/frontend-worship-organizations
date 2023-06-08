@@ -1,17 +1,21 @@
 import { inject as service } from '@ember/service';
-import BaseSessionService from 'ember-simple-auth/services/session';
-import config from 'frontend-worship-organizations/config/environment';
+import SessionService from 'ember-simple-auth/services/session';
 
-export default class SessionService extends BaseSessionService {
+export default class LoketSessionService extends SessionService {
   @service currentSession;
 
-  handleAuthentication(routeAfterAuthentication) {
+  get isMockLoginSession() {
+    return this.isAuthenticated
+      ? this.data.authenticated.authenticator.includes('mock-login')
+      : false;
+  }
+
+  async handleAuthentication(routeAfterAuthentication) {
+    await this.currentSession.load();
     super.handleAuthentication(routeAfterAuthentication);
-    this.currentSession.load();
   }
 
   handleInvalidation() {
-    let logoutUrl = config.torii.providers['acmidm-oauth2'].logoutUrl;
-    super.handleInvalidation(logoutUrl);
+    // Invalidation is handled in the relevant routes directly
   }
 }
