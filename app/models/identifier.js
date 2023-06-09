@@ -12,6 +12,7 @@ export default class IdentifierModel extends Model {
   @attr idName;
 
   @belongsTo('structured-identifier', {
+    async: true,
     inverse: null,
   })
   structuredIdentifier;

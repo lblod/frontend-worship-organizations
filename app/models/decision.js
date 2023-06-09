@@ -5,6 +5,7 @@ export default class DecisionModel extends Model {
   @attr documentLink;
 
   @belongsTo('decision-activity', {
+    async: true,
     inverse: 'givesCauseTo',
   })
   hasDecisionActivity;

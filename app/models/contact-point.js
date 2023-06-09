@@ -13,6 +13,7 @@ export default class ContactPointModel extends Model {
   @attr type;
 
   @belongsTo('address', {
+    async: true,
     inverse: null,
   })
   contactAddress;
