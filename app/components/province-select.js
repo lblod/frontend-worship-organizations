@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import { task } from 'ember-concurrency';
 import { CLASSIFICATION_CODE } from 'frontend-worship-organizations/models/administrative-unit-classification-code';
 import { trackedTask } from 'ember-resources/util/ember-concurrency';

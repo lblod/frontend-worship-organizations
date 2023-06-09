@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import { isActivePosition } from 'frontend-worship-organizations/utils/position';
 
 export default class PeoplePersonPositionsIndexRoute extends Route {
