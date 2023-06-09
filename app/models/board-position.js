@@ -8,7 +8,7 @@ export default class BoardPositionModel extends PostModel {
   })
   roleBoard;
 
-  @belongsTo('contact-point')
+  @belongsTo('contact-point', { async: true, inverse: null })
   contactPoint;
 
   @hasMany('governing-body', {

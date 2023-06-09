@@ -22,6 +22,6 @@ export default class LocationModel extends Model {
   })
   locations;
 
-  @belongsTo('concept')
+  @belongsTo('concept', { async: true, inverse: null })
   exactMatch;
 }

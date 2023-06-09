@@ -5,13 +5,13 @@ export default class UserModel extends Model {
   @attr familyName;
 
   @hasMany('account', {
-    async: true,
+    async: false,
     inverse: 'user',
   })
   accounts;
 
   @hasMany('group', {
-    async: true,
+    async: false,
     inverse: null,
   })
   groups;

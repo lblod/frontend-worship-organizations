@@ -4,7 +4,7 @@ export default class GroupModel extends Model {
   @attr name;
 
   @belongsTo('administrative-unit-classification-code', {
-    async: true,
+    async: false,
     inverse: null,
   })
   classification;
