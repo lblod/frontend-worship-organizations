@@ -20,10 +20,10 @@ export default class AdministrativeUnitsAdministrativeUnitMinistersRoute extends
     let ministerPositions = await administrativeUnit.ministerPositions;
     let ministers = [];
 
-    for (const ministerPosition of ministerPositions.toArray()) {
+    for (const ministerPosition of ministerPositions) {
       const heldByMinisters = await ministerPosition.heldByMinisters;
       if (heldByMinisters.length) {
-        ministers.push(...heldByMinisters.toArray());
+        ministers.push(...heldByMinisters);
       }
     }
 

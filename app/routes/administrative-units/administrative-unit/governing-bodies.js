@@ -21,7 +21,7 @@ export default class AdministrativeUnitsAdministrativeUnitGoverningBodiesRoute e
     let untimedGoverningBodies = await administrativeUnit.governingBodies;
     let governingBodies = [];
 
-    for (let governingBody of untimedGoverningBodies.toArray()) {
+    for (let governingBody of untimedGoverningBodies) {
       const governingBodyClassification = await governingBody.classification;
       if (
         !EXECUTIVE_ORGANEN.find((id) => id === governingBodyClassification.id)
@@ -30,14 +30,12 @@ export default class AdministrativeUnitsAdministrativeUnitGoverningBodiesRoute e
           ? await governingBody.hasTimeSpecializations
           : [];
 
-        const sortedTimesGoverningBodies = timedGoverningBodies
-          .toArray()
-          .sort((a, b) => {
-            if (a.endDate && b.endDate) {
-              return b.endDate - a.endDate;
-            }
-            return b.startDate - a.startDate;
-          });
+        const sortedTimesGoverningBodies = timedGoverningBodies.sort((a, b) => {
+          if (a.endDate && b.endDate) {
+            return b.endDate - a.endDate;
+          }
+          return b.startDate - a.startDate;
+        });
 
         governingBodies.push(...sortedTimesGoverningBodies);
       }

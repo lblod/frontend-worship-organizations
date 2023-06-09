@@ -67,7 +67,7 @@ export default class AdministrativeUnitsIndexController extends Controller {
 
   get modelHasOnlyWorshipAdministrativeUnits() {
     if (this.administrativeUnits) {
-      return !this.administrativeUnits.toArray().some((adminUnit) => {
+      return !this.administrativeUnits.some((adminUnit) => {
         return (
           adminUnit.get('classification').get('id') !==
             CLASSIFICATION_CODE.WORSHIP_SERVICE &&
