@@ -10,7 +10,7 @@ export default class ApplicationRoute extends Route {
     try {
       await this.currentSession.load();
     } catch {
-      this.session.invalidate();
+      this.router.transitionTo('auth.logout');
     }
   }
 }
