@@ -1,6 +1,5 @@
-import Service from '@ember/service';
+import Service, { inject as service } from '@ember/service';
 
-import { inject as service } from '@ember/service';
 import { isActivePosition } from 'frontend-worship-organizations/utils/position';
 import {
   findPrimaryContact,
