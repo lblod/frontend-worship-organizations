@@ -11,7 +11,7 @@
       </Group>
     </AuToolbar>
   {{else if (has-block "alert")}}
-    <AuToolbar>
+    <AuToolbar as |Group|>
       <Group>
         <AuHeading class="au-u-margin-right">
           {{yield to="title"}}
