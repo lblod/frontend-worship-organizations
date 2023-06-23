@@ -11,6 +11,7 @@ export default class WorshipAdministrativeUnitModel extends AdministrativeUnitMo
   @hasMany('minister-position', {
     async: true,
     inverse: 'worshipService',
+    as: 'worship-administrative-unit',
   })
   ministerPositions;
 }

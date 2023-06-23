@@ -8,18 +8,21 @@ export default class PersonModel extends Model {
   @hasMany('mandatory', {
     async: true,
     inverse: 'governingAlias',
+    polymorphic: true,
   })
   mandatories;
 
-  @hasMany('mandatory', {
+  @hasMany('agent', {
     async: true,
     inverse: 'governingAlias',
+    polymorphic: true,
   })
   agents;
 
   @hasMany('agent-in-position', {
     async: true,
     inverse: 'person',
+    polymorphic: true,
   })
   agentsInPosition;
 

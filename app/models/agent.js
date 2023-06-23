@@ -14,6 +14,7 @@ export default class AgentModel extends AgentInPositionModel {
   @belongsTo('person', {
     async: true,
     inverse: 'agents',
+    as: 'agent',
   })
   governingAlias;
 

@@ -17,6 +17,8 @@ export default class MandateModel extends PostModel {
   @hasMany('mandatory', {
     async: true,
     inverse: 'mandate',
+    polymorphic: true,
+    as: 'mandate',
   })
   heldBy;
 }

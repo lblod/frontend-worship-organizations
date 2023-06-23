@@ -17,6 +17,7 @@ export default class AdministrativeUnitModel extends OrganizationModel {
   @hasMany('governing-body', {
     async: true,
     inverse: 'administrativeUnit',
+    as: 'administrative-unit',
   })
   governingBodies;
 

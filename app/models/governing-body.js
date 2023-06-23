@@ -7,6 +7,7 @@ export default class GoverningBodyModel extends Model {
   @belongsTo('administrative-unit', {
     async: true,
     inverse: 'governingBodies',
+    polymorphic: true,
   })
   administrativeUnit;
 
