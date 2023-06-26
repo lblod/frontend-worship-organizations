@@ -9,8 +9,6 @@ export default class PeoplePersonPersonalInformationController extends Controlle
   }
 
   get nationalities() {
-    return this.model.person.nationalities
-      .map((n) => n.nationalityLabel)
-      .join(', ');
+    return this.model.nationalities.map((n) => n.nationalityLabel).join(', ');
   }
 }

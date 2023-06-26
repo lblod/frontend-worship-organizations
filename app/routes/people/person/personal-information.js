@@ -18,10 +18,13 @@ export default class PeoplePersonPersonalInformationRoute extends Route {
       ssn = await registration.structuredIdentifier;
     }
 
+    const nationalities = await person.nationalities;
+
     return {
       person,
       ssn,
       positions,
+      nationalities,
     };
   }
 }
