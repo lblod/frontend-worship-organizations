@@ -1,23 +1,20 @@
 /* ==================================
-   #CARD EXTENSION
-   Extends the default appuniversum card component
+  #CARD EXTENSION
+  Extends the default appuniversum card component
    ================================== */
 
-$card-label-width: 20rem; // This has to be wide enough to fit all labels properly
+$card-label-width: 20rem; /* This has to be wide enough to fit all labels properly */
 $card-label-whitespace: $au-unit-small;
 
-// Read-only card
+/* Read-only card */
 .au-c-card--data {
   border-color: $au-gray-100;
   background-color: $au-gray-100;
 }
 
-// Columns
+/* Columns */
 .au-c-card-columns {
-  margin: -$au-unit-tiny -#{$au-unit};
-
   @include mq(1279px) {
-    margin: -$au-unit-small -#{$au-unit};
     display: flex;
     flex-wrap: wrap;
   }
@@ -32,7 +29,7 @@ $card-label-whitespace: $au-unit-small;
   }
 }
 
-// Card item
+/* Card item */
 .au-c-card-item {
   display: flex;
 

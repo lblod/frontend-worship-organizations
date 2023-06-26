@@ -1,7 +1,9 @@
-// appuniversum has a main container pattern which includes a sidebar
-// but that implementation can't be used in subsections of the app.
-// This is a custom implementation based on that which can be used that way.
-// Tracking issue: https://github.com/appuniversum/ember-appuniversum/issues/86
+/* stylelint-disable at-rule-no-unknown */
+
+/* appuniversum has a main container pattern which includes a sidebar
+but that implementation can't be used in subsections of the app.
+This is a custom implementation based on that which can be used that way.
+Tracking issue: https://github.com/appuniversum/ember-appuniversum/issues/86 */
 
 .au-c-sidebar-container {
   display: flex;

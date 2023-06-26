@@ -1,7 +1,7 @@
-
 /* ==================================
    #APPUNIVERSUM
    ================================== */
+
 /**
  * A design universe for Flanders GOV applications
  */
@@ -18,13 +18,13 @@
  * UTILITIES: Single function helper classes (namespace: '.au-u-...')
  */
 
-// EMBER-APPUNIVERSUM
-@import "ember-appuniversum";
+/* EMBER-APPUNIVERSUM */
+@import 'ember-appuniversum';
 
-// COMPONENTS
-@import "components/cards";
-@import "components/sidebar-container";
-@import "components/table-message";
+/* COMPONENTS */
+@import 'components/cards';
+@import 'components/sidebar-container';
+@import 'components/table-message';
 
-// TEMPORARY HACKS AND QUICKFIXES
+/* TEMPORARY HACKS AND QUICKFIXES */
 @import 'shame';

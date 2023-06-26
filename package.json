@@ -88,7 +88,8 @@
     "release-it-lerna-changelog": "^4.0.1",
     "sass": "^1.49.7",
     "stylelint": "^15.4.0",
-    "stylelint-config-standard": "^32.0.0",
+    "stylelint-config-standard": "^33.0.0",
+    "stylelint-config-standard-scss": "^9.0.0",
     "stylelint-prettier": "^3.0.0",
     "tracked-built-ins": "^3.1.1",
     "webpack": "^5.78.0"
