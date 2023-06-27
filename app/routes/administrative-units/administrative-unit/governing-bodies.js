@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import { EXECUTIVE_ORGANEN } from 'frontend-worship-organizations/models/governing-body-classification-code';
 
 export default class AdministrativeUnitsAdministrativeUnitGoverningBodiesRoute extends Route {
@@ -21,7 +21,7 @@ export default class AdministrativeUnitsAdministrativeUnitGoverningBodiesRoute e
     let untimedGoverningBodies = await administrativeUnit.governingBodies;
     let governingBodies = [];
 
-    for (let governingBody of untimedGoverningBodies.toArray()) {
+    for (let governingBody of untimedGoverningBodies) {
       const governingBodyClassification = await governingBody.classification;
       if (
         !EXECUTIVE_ORGANEN.find((id) => id === governingBodyClassification.id)
@@ -31,7 +31,7 @@ export default class AdministrativeUnitsAdministrativeUnitGoverningBodiesRoute e
           : [];
 
         const sortedTimesGoverningBodies = timedGoverningBodies
-          .toArray()
+          .slice()
           .sort((a, b) => {
             if (a.endDate && b.endDate) {
               return b.endDate - a.endDate;

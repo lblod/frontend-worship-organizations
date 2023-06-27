@@ -7,16 +7,19 @@ export default class MinisterModel extends AgentInPositionModel {
   @tracked isCurrentPosition;
 
   @belongsTo('minister-position', {
+    async: true,
     inverse: 'heldByMinisters',
   })
   ministerPosition;
 
   @belongsTo('financing-code', {
+    async: true,
     inverse: null,
   })
   financing;
 
   @hasMany('minister-condition', {
+    async: true,
     inverse: null,
   })
   conditions;

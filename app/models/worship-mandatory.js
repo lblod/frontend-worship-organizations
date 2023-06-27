@@ -6,6 +6,7 @@ export default class WorshipMandatoryModel extends MandatoryModel {
   @attr reasonStopped;
 
   @belongsTo('half-election', {
+    async: true,
     inverse: null,
   })
   typeHalf;

@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 
 export default class PeoplePersonPersonalInformationController extends Controller {
   @service router;
@@ -9,8 +9,6 @@ export default class PeoplePersonPersonalInformationController extends Controlle
   }
 
   get nationalities() {
-    return this.model.person.nationalities
-      .map((n) => n.nationalityLabel)
-      .join(', ');
+    return this.model.nationalities.map((n) => n.nationalityLabel).join(', ');
   }
 }

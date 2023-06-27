@@ -38,21 +38,26 @@ export const MAPPING_POSITION_RELIGION = {
 
 export default class MinisterPositionModel extends PostModel {
   @belongsTo('minister-position-function', {
+    async: true,
     inverse: null,
   })
   function;
 
   @belongsTo('worship-administrative-unit', {
+    async: true,
     inverse: 'ministerPositions',
+    polymorphic: true,
   })
   worshipService;
 
   @belongsTo('representative-body', {
+    async: true,
     inverse: 'ministerPositions',
   })
   representativeBody;
 
   @hasMany('minister', {
+    async: true,
     inverse: 'ministerPosition',
   })
   heldByMinisters;

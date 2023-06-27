@@ -6,6 +6,7 @@ export default class WorshipServiceModel extends WorshipAdministrativeUnitModel 
   @attr crossBorder;
 
   @hasMany('local-involvement', {
+    async: true,
     inverse: 'worshipService',
   })
   involvements;

@@ -1,8 +1,11 @@
 import Route from '@ember/routing/route';
 import { keepLatestTask } from 'ember-concurrency';
 import { CLASSIFICATION } from 'frontend-worship-organizations/models/administrative-unit-classification-code';
+import { service } from '@ember/service';
 
 export default class AdministrativeUnitsIndexRoute extends Route {
+  @service store;
+
   queryParams = {
     page: { refreshModel: true },
     sort: { refreshModel: true },
