@@ -7,11 +7,11 @@ module('Integration | Helper | rrn-format', function (hooks) {
   setupRenderingTest(hooks);
 
   // TODO: Replace this with your real tests.
-  test('it renders', async function (assert) {
-    this.set('inputValue', '1234');
+  test('it formats', async function (assert) {
+    this.set('inputValue', '12345678901');
 
-    await render(hbs`{{rrn-format inputValue}}`);
+    await render(hbs`{{rrn-format this.inputValue}}`);
 
-    assert.strictEqual(this.element.textContent.trim(), '1234');
+    assert.strictEqual(this.element.textContent.trim(), '12.34.56-789.01');
   });
 });
