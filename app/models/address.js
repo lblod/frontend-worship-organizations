@@ -12,6 +12,7 @@ export default class AddressModel extends Model {
   @attr fullAddress;
 
   @belongsTo('concept', {
+    async: true,
     inverse: null,
   })
   source;

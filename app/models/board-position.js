@@ -3,14 +3,16 @@ import PostModel from './post';
 
 export default class BoardPositionModel extends PostModel {
   @belongsTo('board-position-code', {
+    async: true,
     inverse: null,
   })
   roleBoard;
 
-  @belongsTo('contact-point')
+  @belongsTo('contact-point', { async: true, inverse: null })
   contactPoint;
 
   @hasMany('governing-body', {
+    async: true,
     inverse: 'boardPositions',
   })
   governingBodies;

@@ -5,31 +5,38 @@ export default class GoverningBodyModel extends Model {
   @attr('date') endDate;
 
   @belongsTo('administrative-unit', {
+    async: true,
     inverse: 'governingBodies',
+    polymorphic: true,
   })
   administrativeUnit;
 
   @belongsTo('governing-body-classification-code', {
+    async: true,
     inverse: null,
   })
   classification;
 
   @belongsTo('governing-body', {
+    async: true,
     inverse: 'hasTimeSpecializations',
   })
   isTimeSpecializationOf;
 
   @hasMany('governing-body', {
+    async: true,
     inverse: 'isTimeSpecializationOf',
   })
   hasTimeSpecializations;
 
   @hasMany('mandate', {
+    async: true,
     inverse: 'governingBody',
   })
   mandates;
 
   @hasMany('board-position', {
+    async: true,
     inverse: 'governingBodies',
   })
   boardPositions;

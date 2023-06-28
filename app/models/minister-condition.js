@@ -4,11 +4,13 @@ export default class MinisterConditionModel extends Model {
   @attr satisfied;
 
   @belongsTo('minister-conditions-criterion', {
+    async: true,
     inverse: null,
   })
   criterion;
 
   @belongsTo('document-type-criterion', {
+    async: true,
     inverse: null,
   })
   documentTypeCriterion;

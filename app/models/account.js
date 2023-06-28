@@ -6,7 +6,7 @@ export default class AccountModel extends Model {
 
   @belongsTo('user', {
     inverse: 'accounts',
-    async: false,
+    async: true,
   })
   user;
 }

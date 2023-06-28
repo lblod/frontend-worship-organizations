@@ -1,17 +1,17 @@
 'use strict';
 
 module.exports = function (environment) {
-  let ENV = {
+  const ENV = {
     modulePrefix: 'frontend-worship-organizations',
     environment,
     rootURL: '/',
     locationType: 'history',
     EmberENV: {
+      EXTEND_PROTOTYPES: false,
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
       },
-      EXTEND_PROTOTYPES: false,
     },
 
     APP: {
@@ -42,18 +42,13 @@ module.exports = function (environment) {
     environmentName: '{{ENVIRONMENT_NAME}}',
     environmentTitle: '{{ENVIRONMENT_TITLE}}',
 
-    torii: {
-      disableRedirectInitializer: true,
-      providers: {
-        'acmidm-oauth2': {
-          apiKey: '{{OAUTH_API_KEY}}',
-          baseUrl: '{{OAUTH_API_BASE_URL}}',
-          scope: '{{OAUTH_API_SCOPE}}',
-          redirectUri: '{{OAUTH_API_REDIRECT_URL}}',
-          logoutUrl: '{{OAUTH_API_LOGOUT_URL}}',
-          returnUrl: '{{OAUTH_SWITCH_URL}}',
-        },
-      },
+    acmidm: {
+      clientId: '{{OAUTH_API_KEY}}',
+      scope: '{{OAUTH_API_SCOPE}}',
+      authUrl: '{{OAUTH_API_BASE_URL}}',
+      logoutUrl: '{{OAUTH_API_LOGOUT_URL}}',
+      authRedirectUrl: '{{OAUTH_API_REDIRECT_URL}}',
+      switchRedirectUrl: '{{OAUTH_SWITCH_URL}}',
     },
     showAppVersionHash: process.env.SHOW_APP_VERSION_HASH === 'true',
     uriInfoServiceUrl: '/uri-info',
@@ -68,7 +63,6 @@ module.exports = function (environment) {
     ENV.showAppVersionHash = true;
     ENV.environmentName = 'development';
     ENV.environmentTitle = 'ontwikkelomgeving';
-    ENV.torii.providers['acmidm-oauth2'].logoutUrl = '/mock-login';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

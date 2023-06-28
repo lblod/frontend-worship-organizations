@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 
 export default class PeoplePersonPersonalInformationRoute extends Route {
   @service store;
@@ -18,10 +18,13 @@ export default class PeoplePersonPersonalInformationRoute extends Route {
       ssn = await registration.structuredIdentifier;
     }
 
+    const nationalities = await person.nationalities;
+
     return {
       person,
       ssn,
       positions,
+      nationalities,
     };
   }
 }

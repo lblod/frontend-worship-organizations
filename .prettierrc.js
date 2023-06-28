@@ -9,5 +9,11 @@ module.exports = {
         singleQuote: false,
       },
     },
+    {
+      files: '*.{js,ts}',
+      options: {
+        singleQuote: true,
+      },
+    },
   ],
 };

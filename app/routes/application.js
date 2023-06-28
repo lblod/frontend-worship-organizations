@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 
 export default class ApplicationRoute extends Route {
   @service currentSession;
@@ -10,7 +10,7 @@ export default class ApplicationRoute extends Route {
     try {
       await this.currentSession.load();
     } catch {
-      this.session.invalidate();
+      this.router.transitionTo('auth.logout');
     }
   }
 }

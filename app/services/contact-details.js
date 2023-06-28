@@ -1,6 +1,5 @@
-import Service from '@ember/service';
+import Service, { service } from '@ember/service';
 
-import { inject as service } from '@ember/service';
 import { isActivePosition } from 'frontend-worship-organizations/utils/position';
 import {
   findPrimaryContact,
@@ -69,7 +68,7 @@ export default class ContactDetailsService extends Service {
     const governingBodies = await boardPosition.governingBodies;
 
     let administrativeUnits = [];
-    for (const governingBody of governingBodies.toArray()) {
+    for (const governingBody of governingBodies) {
       const isTimeSpecializationOf = await governingBody.isTimeSpecializationOf;
       const administrativeUnit =
         await isTimeSpecializationOf.administrativeUnit;
@@ -96,9 +95,9 @@ export default class ContactDetailsService extends Service {
     });
     const positions = [];
 
-    const mandatories = (await person.mandatories).toArray(); // mandatarissen
-    const agents = (await person.agents).toArray(); // leidinggevenden
-    const ministers = (await person.agentsInPosition).toArray(); // bedinaren
+    const mandatories = await person.mandatories; // mandatarissen
+    const agents = await person.agents; // leidinggevenden
+    const ministers = await person.agentsInPosition; // bedinaren
 
     for (let mandatory of mandatories) {
       const position = await this.mandatoryToPosition(mandatory);

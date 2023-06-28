@@ -5,19 +5,19 @@ export default class UserModel extends Model {
   @attr familyName;
 
   @hasMany('account', {
-    inverse: 'user',
     async: false,
+    inverse: 'user',
   })
   accounts;
 
   @hasMany('group', {
-    inverse: null,
     async: false,
+    inverse: null,
   })
   groups;
 
   get group() {
-    return this.groups.firstObject;
+    return this.groups[0];
   }
 
   get fullName() {

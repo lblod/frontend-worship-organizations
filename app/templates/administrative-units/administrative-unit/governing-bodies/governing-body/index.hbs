@@ -59,10 +59,10 @@
     </DataCard>
 
     <div>
-      <AuToolbar class="au-u-margin-bottom-small">
-        <AuToolbarGroup>
+      <AuToolbar class="au-u-margin-bottom-small" as |Group|>
+        <Group>
           <AuHeading @level="4" @skin="5">Bestuursleden</AuHeading>
-        </AuToolbarGroup>
+        </Group>
       </AuToolbar>
       <AuDataTable
         @content={{@model.memberMandatories}}
@@ -134,10 +134,10 @@
     </div>
 
     <div>
-      <AuToolbar class="au-u-margin-bottom-small">
-        <AuToolbarGroup>
+      <AuToolbar class="au-u-margin-bottom-small" as |Group|>
+        <Group>
           <AuHeading @level="4" @skin="5">Mandatarissen</AuHeading>
-        </AuToolbarGroup>
+        </Group>
       </AuToolbar>
       <AuDataTable
         @content={{@model.otherMandatories}}

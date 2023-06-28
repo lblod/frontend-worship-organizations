@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import { task } from 'ember-concurrency';
 import { CLASSIFICATION_CODE } from 'frontend-worship-organizations/models/administrative-unit-classification-code';
 import { trackedTask } from 'ember-resources/util/ember-concurrency';
@@ -60,9 +60,9 @@ export default class ProvinceSelectComponent extends Component {
       provinces = yield this.store.query('administrative-unit', query);
     }
 
-    if (provinces.toArray().length === 1) {
+    if (provinces.length === 1) {
       this.previousMunicipality = this.args.selectedMunicipality;
-      this.previousProvince = provinces.mapBy('name').toArray()[0];
+      this.previousProvince = provinces.mapBy('name')[0];
       this.args.onChange(this.previousProvince);
     } else {
       this.previousMunicipality = null;
