@@ -1,5 +1,16 @@
 
 
+
+## 1.0.2 (2023-06-28)
+
+#### :house: Internal
+* [#8](https://github.com/lblod/frontend-worship-organizations/pull/8) Ember 4.12 LTS upgrade ([@claire-lovisa](https://github.com/claire-lovisa))
+* [#7](https://github.com/lblod/frontend-worship-organizations/pull/7) Bump ember-acmidm-login to v2 ([@claire-lovisa](https://github.com/claire-lovisa))
+
+#### Committers: 1
+- Claire Lovisa ([@claire-lovisa](https://github.com/claire-lovisa))
+
+
 ## 1.0.1 (2023-03-31)
 
 #### :rocket: Enhancement
