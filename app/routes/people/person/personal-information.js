@@ -6,25 +6,31 @@ export default class PeoplePersonPersonalInformationRoute extends Route {
   @service router;
   @service contactDetails;
 
+  @service sensitivePersonalInformation;
   async model() {
     let { id: personId } = this.paramsFor('people.person');
 
     const { person, positions } =
       await this.contactDetails.getPersonAndAllPositions(personId);
 
-    const registration = await person.registration;
-    let ssn = null;
-    if (registration) {
-      ssn = await registration.structuredIdentifier;
-    }
+    let askSensitiveInformation = null;
+    let requestSensitiveInformation = null;
 
-    const nationalities = await person.nationalities;
+    if (
+      this.sensitivePersonalInformation.hasStoredSensitiveInformation(person)
+    ) {
+      requestSensitiveInformation =
+        this.sensitivePersonalInformation.getStoredSensitiveInformation(person);
+    } else {
+      askSensitiveInformation =
+        await this.sensitivePersonalInformation.askInformation(person);
+    }
 
     return {
       person,
-      ssn,
+      askSensitiveInformation,
+      requestSensitiveInformation,
       positions,
-      nationalities,
     };
   }
 }

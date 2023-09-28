@@ -21,7 +21,13 @@ Router.map(function () {
   this.route('index', { path: '' });
   this.route('people', { path: '/personen' }, function () {
     this.route('person', { path: '/:id/' }, function () {
-      this.route('personal-information', { path: '/contactgegevens' });
+      this.route(
+        'personal-information',
+        { path: '/contactgegevens' },
+        function () {
+          this.route('request-sensitive-data');
+        }
+      );
       this.route('positions', { path: '/posities' }, function () {
         this.route(
           'mandatory',
