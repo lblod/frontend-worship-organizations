@@ -9,7 +9,6 @@ export default class PeoplePersonPersonalInformationRequestSensitiveDataRoute ex
   }
 
   resetController(controller) {
-    console.log('controller:', controller);
     super.resetController(...arguments);
 
     controller.reset();
