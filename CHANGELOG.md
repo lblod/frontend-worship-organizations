@@ -2,6 +2,15 @@
 
 
 
+## 1.1.0 (2023-11-09)
+
+#### :rocket: Enhancement
+* [#9](https://github.com/lblod/frontend-worship-organizations/pull/9) Feature/privacy ([@nbittich](https://github.com/nbittich))
+
+#### Committers: 1
+- Nordine Bittich ([@nbittich](https://github.com/nbittich))
+
+
 ## 1.1.0-0 (2023-11-07)
 
 #### :rocket: Enhancement
