@@ -1,11 +1,11 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 
-export default class MockLoginRoute extends Route {
+export default class ControllerLoginRoute extends Route {
   @service session;
-  @service store;
+  @service router;
   @service currentSession;
-
+  @service store;
   queryParams = {
     page: {
       refreshModel: true,
@@ -16,8 +16,10 @@ export default class MockLoginRoute extends Route {
     if (this.session.isAuthenticated) {
       await this.currentSession.load();
       if (!this.currentSession.roles?.includes('ControllerWOP')) {
-        this.session.prohibitAuthentication('index');
+        this.router.replaceWith('index');
       }
+    } else {
+      this.router.replaceWith('auth.callback');
     }
   }
 
