@@ -48,11 +48,7 @@
                 type="button"
                 {{on
                   "click"
-                  (perform
-                    this.loginTask
-                    accountId=account.id
-                    groupId=account.user.group.id
-                  )
+                  (perform this.loginTask account.id account.user.group.id)
                 }}
               >
                 {{account.user.firstName}}

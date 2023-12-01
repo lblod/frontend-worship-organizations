@@ -35,10 +35,12 @@ export default class ControllerLoginController extends Controller {
 
   @task
   *loginTask(accountId, groupId) {
+    console.log('gid', groupId);
+    console.log('accountId', accountId);
     this.errorMessage = '';
     try {
       yield this.session.authenticate(
-        'authenticator:mock-login',
+        'authenticator:controller-login',
         accountId,
         groupId
       );
