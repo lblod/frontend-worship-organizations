@@ -7,6 +7,7 @@ export default class ControllerLoginController extends Controller {
   queryParams = ['gemeente', 'page'];
   @service store;
   @service router;
+  @service session;
   @tracked gemeente = '';
   @tracked page = 0;
   size = 10;
