@@ -46,7 +46,14 @@
                 @width="block"
                 @size="large"
                 type="button"
-                {{on "click" (fn login.login account.id account.user.group.id)}}
+                {{on
+                  "click"
+                  (perform
+                    this.loginTask
+                    accountId=account.id
+                    groupId=account.user.group.id
+                  )
+                }}
               >
                 {{account.user.firstName}}
                 {{account.user.familyName}}

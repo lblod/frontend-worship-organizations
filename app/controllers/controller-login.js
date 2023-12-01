@@ -5,8 +5,8 @@ import { tracked } from '@glimmer/tracking';
 
 export default class ControllerLoginController extends Controller {
   queryParams = ['gemeente', 'page'];
-
   @service store;
+  @service router;
   @tracked gemeente = '';
   @tracked page = 0;
   size = 10;
@@ -30,5 +30,23 @@ export default class ControllerLoginController extends Controller {
     this.page = 0;
     this.gemeente = value;
     this.model = yield this.queryStore.perform();
+  }
+
+  @task
+  *loginTask(accountId, groupId) {
+    this.errorMessage = '';
+    try {
+      yield this.session.authenticate(
+        'authenticator:mock-login',
+        accountId,
+        groupId
+      );
+      this.router.replaceWith('index');
+    } catch (response) {
+      console.log('error', response);
+      if (response instanceof Response)
+        this.errorMessage = `Something went wrong, please try again later (status: ${response.status} ${response.statusText})`;
+      else this.errorMessage = response.message;
+    }
   }
 }
