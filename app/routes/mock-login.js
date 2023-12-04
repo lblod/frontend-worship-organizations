@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 
+import ENV from 'frontend-worship-organizations/config/environment';
 export default class MockLoginRoute extends Route {
   @service session;
   @service store;
@@ -15,7 +16,10 @@ export default class MockLoginRoute extends Route {
   async beforeModel() {
     if (this.session.isAuthenticated) {
       await this.currentSession.load();
-      if (!this.currentSession.roles?.includes('ControllerWOP')) {
+      if (
+        ENV.controllerLogin === 'true' &&
+        !this.currentSession.roles?.includes('ControllerWOP')
+      ) {
         this.session.prohibitAuthentication('index');
       }
     }
