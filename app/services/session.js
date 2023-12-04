@@ -10,6 +10,12 @@ export default class LoketSessionService extends SessionService {
       : false;
   }
 
+  get isControllerLoginSession() {
+    return this.isAuthenticated
+      ? this.data.authenticated.authenticator.includes('controller-login')
+      : false;
+  }
+
   async handleAuthentication(routeAfterAuthentication) {
     await this.currentSession.load();
     super.handleAuthentication(routeAfterAuthentication);

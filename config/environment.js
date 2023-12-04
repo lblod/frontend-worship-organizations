@@ -23,6 +23,7 @@ module.exports = function (environment) {
       },
     },
 
+    controllerLogin: '{{CONTROLLER_LOGIN}}',
     announce: {
       maintenance: {
         enabled: '{{ANNOUNCE_MAINTENANCE_ENABLED}}',

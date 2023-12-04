@@ -1,6 +1,7 @@
 import EmberRouter from '@ember/routing/router';
 import config from 'frontend-worship-organizations/config/environment';
 
+import ENV from 'frontend-worship-organizations/config/environment';
 export default class Router extends EmberRouter {
   location = config.locationType;
   rootURL = config.rootURL;
@@ -8,15 +9,21 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('login');
-  this.route('mock-login');
-  this.route('switch-login');
-  this.route('controller-login');
+  // CONTROLLER_LOGIN
+  if (ENV.controllerLogin !== 'true') {
+    this.route('mock-login');
+    this.route('switch-login');
+  } else {
+    this.route('controller-login');
+  }
 
   this.route('auth', { path: '/authorization' }, function () {
     this.route('callback');
     this.route('login');
     this.route('logout');
-    this.route('switch');
+    if (ENV.controllerLogin !== 'true') {
+      this.route('switch');
+    }
   });
 
   this.route('index', { path: '' });
