@@ -1,12 +1,11 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 
-import ENV from 'frontend-worship-organizations/config/environment';
-export default class MockLoginRoute extends Route {
+export default class ControllerLoginRoute extends Route {
   @service session;
-  @service store;
+  @service router;
   @service currentSession;
-
+  @service store;
   queryParams = {
     page: {
       refreshModel: true,
@@ -16,12 +15,11 @@ export default class MockLoginRoute extends Route {
   async beforeModel() {
     if (this.session.isAuthenticated) {
       await this.currentSession.load();
-      if (
-        ENV.controllerLogin === 'true' &&
-        !this.currentSession.roles?.includes('ControllerWOP')
-      ) {
-        this.session.prohibitAuthentication('index');
+      if (!this.currentSession.roles?.includes('ControllerWOP')) {
+        this.router.replaceWith('index');
       }
+    } else {
+      this.router.replaceWith('auth.callback');
     }
   }
 
