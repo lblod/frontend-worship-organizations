@@ -3,6 +3,15 @@
 
 
 
+## 1.2.0 (2024-01-09)
+
+#### :rocket: Enhancement
+* [#10](https://github.com/lblod/frontend-worship-organizations/pull/10) Feature/controle env ([@nbittich](https://github.com/nbittich))
+
+#### Committers: 1
+- Nordine Bittich ([@nbittich](https://github.com/nbittich))
+
+
 ## 1.2.0-0 (2023-12-14)
 
 #### :rocket: Enhancement
