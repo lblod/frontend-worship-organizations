@@ -4,6 +4,14 @@
 
 
 
+## 1.2.1 (2024-11-05)
+
+#### :bug: Bug Fix
+* [#11](https://github.com/lblod/frontend-worship-organizations/pull/11) fix: filter mandatories for persons with duplicate names ([@mirdono](https://github.com/mirdono))
+
+#### Committers: 1
+- Alexander van den Berghe ([@mirdono](https://github.com/mirdono))
+
 ## 1.2.1-0 (2024-10-31)
 
 #### :bug: Bug Fix
