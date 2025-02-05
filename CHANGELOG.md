@@ -4,6 +4,16 @@
 
 
 
+
+## 1.2.2 (2025-02-05)
+
+#### :bug: Bug Fix
+* [#13](https://github.com/lblod/frontend-worship-organizations/pull/13) Fix secondary contact selection ([@claire-lovisa](https://github.com/claire-lovisa))
+
+#### Committers: 1
+- Claire Lovisa ([@claire-lovisa](https://github.com/claire-lovisa))
+
+
 ## 1.2.1 (2024-11-05)
 
 #### :bug: Bug Fix
