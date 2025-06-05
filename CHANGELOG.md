@@ -1,9 +1,7 @@
+## 1.2.3 (2025-06-05)
 
-
-
-
-
-
+#### :rocket: Enhancement
+* [#14](https://github.com/lblod/frontend-worship-organizations/pull/14) [DL-5635]: update privacy policy disclaimer ([@wolfderechter](https://github.com/wolfderechter))
 
 ## 1.2.2 (2025-02-05)
 
