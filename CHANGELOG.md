@@ -1,3 +1,11 @@
+## 1.2.4 (2025-06-26)
+
+#### :rocket: Enhancement
+* [#12](https://github.com/lblod/frontend-worship-organizations/pull/12) Revert "fix: filter mandatories for persons with duplicate names" ([@mirdono](https://github.com/mirdono))
+
+#### Committers: 1
+- Alexander van den Berghe ([@mirdono](https://github.com/mirdono))
+
 ## 1.2.3 (2025-06-05)
 
 #### :rocket: Enhancement
