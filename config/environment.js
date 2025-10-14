@@ -38,7 +38,7 @@ module.exports = function (environment) {
         message: '{{ANNOUNCE_TESTING_MESSAGE}}',
       },
     },
-    appName: 'EredienstenOrganisaties',
+    appName: 'Organisaties Erediensten',
     contactEmail: 'organisaties.abb@vlaanderen.be',
     environmentName: '{{ENVIRONMENT_NAME}}',
     environmentTitle: '{{ENVIRONMENT_TITLE}}',
