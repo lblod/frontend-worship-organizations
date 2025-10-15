@@ -1,3 +1,16 @@
+
+## 1.2.5 (2025-10-15)
+
+#### :rocket: Enhancement
+* [#15](https://github.com/lblod/frontend-worship-organizations/pull/15) Rename app from Erediensten Organisaties to Organisaties Erediensten ([@claire-lovisa](https://github.com/claire-lovisa))
+
+#### :house: Internal
+* [#16](https://github.com/lblod/frontend-worship-organizations/pull/16) Add test pr woodpecker pipeline ([@claire-lovisa](https://github.com/claire-lovisa))
+
+#### Committers: 1
+- Claire Lovisa ([@claire-lovisa](https://github.com/claire-lovisa))
+
+
 ## 1.2.4 (2025-06-26)
 
 #### :rocket: Enhancement
