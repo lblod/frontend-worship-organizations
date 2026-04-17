@@ -1,3 +1,10 @@
+## 1.2.6 (2026-04-17)
+
+#### :rocket: Enhancement
+* [#17](https://github.com/lblod/frontend-worship-organizations/pull/17) [DL-7267]: update manual link ([@wolfderechter](https://github.com/wolfderechter))
+
+#### Committers: 1
+- [@wolfderechter](https://github.com/wolfderechter)
 
 ## 1.2.5 (2025-10-15)
 
