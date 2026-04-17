@@ -56,7 +56,7 @@ module.exports = function (environment) {
 
     userManual: {
       general:
-        'https://abb-vlaanderen.gitbook.io/handleiding-loket/erediensten/eredienst-organisaties',
+        'https://abb-vlaanderen.gitbook.io/handleiding-organisaties-erediensten/',
     },
   };
 
