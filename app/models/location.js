@@ -5,23 +5,28 @@ export default class LocationModel extends Model {
   @attr level;
 
   @hasMany('administrative-unit', {
-    async: true,
     inverse: 'locatedWithin',
+    async: true,
+    polymorphic: true,
+    as: 'location',
   })
   administrativeUnits;
 
-  @belongsTo('location', {
-    async: true,
+  @hasMany('location', {
     inverse: 'locations',
+    async: true,
   })
   locatedWithin;
 
-  @hasMany('locations', {
-    async: true,
+  @hasMany('location', {
     inverse: 'locatedWithin',
+    async: true,
   })
   locations;
 
-  @belongsTo('concept', { async: true, inverse: null })
+  @belongsTo('concept', {
+    inverse: null,
+    async: true,
+  })
   exactMatch;
 }

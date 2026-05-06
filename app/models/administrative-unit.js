@@ -9,8 +9,10 @@ export default class AdministrativeUnitModel extends OrganizationModel {
   classification;
 
   @belongsTo('location', {
-    async: true,
     inverse: 'administrativeUnits',
+    async: true,
+    polymorphic: true,
+    as: 'administrative-unit',
   })
   locatedWithin;
 
@@ -22,8 +24,10 @@ export default class AdministrativeUnitModel extends OrganizationModel {
   governingBodies;
 
   @hasMany('local-involvement', {
-    async: true,
     inverse: 'administrativeUnit',
+    async: true,
+    polymorphic: true,
+    as: 'administrative-unit',
   })
   involvedBoards;
 
