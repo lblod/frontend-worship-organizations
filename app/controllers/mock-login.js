@@ -23,7 +23,7 @@ export default class MockLoginController extends Controller {
     return accounts;
   });
 
-  updateSearch = restartableTask(async value => {
+  updateSearch = restartableTask(async (value) => {
     await timeout(500);
     this.page = 0;
     this.gemeente = value;

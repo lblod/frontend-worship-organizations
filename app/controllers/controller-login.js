@@ -24,7 +24,7 @@ export default class ControllerLoginController extends Controller {
     return accounts;
   });
 
-  updateSearch = restartableTask(async value => {
+  updateSearch = restartableTask(async (value) => {
     await timeout(500);
     this.page = 0;
     this.gemeente = value;
@@ -39,7 +39,7 @@ export default class ControllerLoginController extends Controller {
       await this.session.authenticate(
         'authenticator:controller-login',
         accountId,
-        groupId
+        groupId,
       );
       this.router.replaceWith('index');
     } catch (response) {

@@ -6,7 +6,7 @@ export default class AdministrativeUnitsAdministrativeUnitGoverningBodiesGoverni
 
   async model({ governingBodyId }) {
     const administrativeUnit = this.modelFor(
-      'administrative-units.administrative-unit'
+      'administrative-units.administrative-unit',
     );
 
     const governingBody = await this.store.findRecord(
@@ -14,7 +14,7 @@ export default class AdministrativeUnitsAdministrativeUnitGoverningBodiesGoverni
       governingBodyId,
       {
         reload: true,
-      }
+      },
     );
 
     const untimedGoverningBodiy = await governingBody.isTimeSpecializationOf;

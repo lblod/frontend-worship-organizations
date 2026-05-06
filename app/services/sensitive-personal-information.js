@@ -65,7 +65,7 @@ export default class SensitivePersonalInformationService extends Service {
 
     let response = await this._request(
       PRIVACY_CENTRIC_SERVICE_ENDPOINT.REQUEST,
-      body
+      body,
     );
     let data = (await response.json()).data;
     let sensitiveInfo = await this.mapSensitivePersonalInformation(data);

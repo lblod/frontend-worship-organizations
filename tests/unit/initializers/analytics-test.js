@@ -1,3 +1,4 @@
+/* eslint-disable ember/no-runloop */
 import Application from '@ember/application';
 
 import { initialize } from 'frontend-worship-organizations/initializers/analytics';

@@ -6,7 +6,7 @@ export default class AdministrativeUnitsAdministrativeUnitIndexRoute extends Rou
 
   beforeModel() {
     return this.router.replaceWith(
-      'administrative-units.administrative-unit.governing-bodies'
+      'administrative-units.administrative-unit.governing-bodies',
     );
   }
 }
