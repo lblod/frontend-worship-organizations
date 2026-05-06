@@ -22,7 +22,7 @@ export default class AdministrativeUnitsIndexController extends Controller {
   @tracked page = 0;
   size = 20;
   @tracked sort = 'name';
-  @tracked name = '';
+  @tracked name = null;
   @tracked municipality = '';
   @tracked classificationId = '';
   @tracked recognizedWorshipTypeId = '';

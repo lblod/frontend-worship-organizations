@@ -8,10 +8,6 @@ import { CLASSIFICATION_CODE } from 'frontend-worship-organizations/models/admin
 export default class ClassificationSelectComponent extends Component {
   @service store;
 
-  classifications = trackedTask(this, this.loadClassificationsTask, () => [
-    this.args.selectedRecognizedWorshipTypeId,
-  ]);
-
   get selectedClassification() {
     if (typeof this.args.selected === 'string') {
       return this.findClassificationById(this.args.selected);
@@ -59,4 +55,8 @@ export default class ClassificationSelectComponent extends Component {
   isIdInBlacklist(id) {
     return CENTRAL_WORSHIP_SERVICE_BLACKLIST.find((element) => element == id);
   }
+
+  classifications = trackedTask(this, this.loadClassificationsTask, () => [
+    this.args.selectedRecognizedWorshipTypeId,
+  ]);
 }

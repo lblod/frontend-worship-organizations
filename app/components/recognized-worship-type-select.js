@@ -8,12 +8,6 @@ import { CLASSIFICATION_CODE } from 'frontend-worship-organizations/models/admin
 export default class RecognizedWorshipTypeSelect extends Component {
   @service store;
 
-  recognizedWorshipTypes = trackedTask(
-    this,
-    this.loadRecognizedWorshipTypesTask,
-    () => [this.args.selectedClassificationId]
-  );
-
   get selectedRecognizedWorshipType() {
     if (typeof this.args.selected === 'string') {
       return this.getRecognizedWorshipTypeById(this.args.selected);
@@ -28,7 +22,7 @@ export default class RecognizedWorshipTypeSelect extends Component {
     }
 
     return this.recognizedWorshipTypes.value.find(
-      (worshipType) => worshipType.id === id
+      (worshipType) => worshipType.id === id,
     );
   }
 
@@ -39,7 +33,7 @@ export default class RecognizedWorshipTypeSelect extends Component {
 
     let recognizedWorshipTypes = await this.store.query(
       'recognized-worship-type',
-      { sort: 'label' }
+      { sort: 'label' },
     );
 
     if (
@@ -48,7 +42,7 @@ export default class RecognizedWorshipTypeSelect extends Component {
     ) {
       // Filter out blacklisted types for central worship services
       recognizedWorshipTypes = recognizedWorshipTypes.filter(
-        (t) => !this.isIdInBlacklist(t.id)
+        (t) => !this.isIdInBlacklist(t.id),
       );
     }
 
@@ -58,4 +52,10 @@ export default class RecognizedWorshipTypeSelect extends Component {
   isIdInBlacklist(id) {
     return CENTRAL_WORSHIP_SERVICE_BLACKLIST.find((element) => element == id);
   }
+
+  recognizedWorshipTypes = trackedTask(
+    this,
+    this.loadRecognizedWorshipTypesTask,
+    () => [this.args.selectedClassificationId],
+  );
 }
