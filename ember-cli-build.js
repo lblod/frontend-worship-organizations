@@ -14,7 +14,10 @@ module.exports = function (defaults) {
       sourcemap: true,
     },
     babel: {
-      plugins: [require.resolve('ember-auto-import/babel-plugin')],
+      plugins: [
+        require.resolve('ember-auto-import/babel-plugin'),
+        require.resolve('ember-concurrency/async-arrow-task-transform'),
+      ],
     },
     // Disable chunk css fingerprinting until the config is included in ember-auto-import: https://github.com/ef4/ember-auto-import/pull/496
     fingerprint: {

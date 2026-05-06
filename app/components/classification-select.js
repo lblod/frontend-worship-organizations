@@ -29,10 +29,10 @@ export default class ClassificationSelectComponent extends Component {
     return classifications.find((status) => status.id === id);
   }
 
-  @task *loadClassificationsTask() {
+  loadClassificationsTask = task(async () => {
     // Trick used to avoid infinite loop
     // See https://github.com/NullVoxPopuli/ember-resources/issues/340 for more details
-    yield Promise.resolve();
+    await Promise.resolve();
 
     let allowedIds;
     let selectedRecognizedWorshipTypeId =
@@ -50,11 +50,11 @@ export default class ClassificationSelectComponent extends Component {
       ];
     }
 
-    return yield this.store.query('administrative-unit-classification-code', {
+    return await this.store.query('administrative-unit-classification-code', {
       'filter[:id:]': allowedIds.join(),
       sort: 'label',
     });
-  }
+  });
 
   isIdInBlacklist(id) {
     return CENTRAL_WORSHIP_SERVICE_BLACKLIST.find((element) => element == id);

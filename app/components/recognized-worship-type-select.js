@@ -32,13 +32,12 @@ export default class RecognizedWorshipTypeSelect extends Component {
     );
   }
 
-  @task
-  *loadRecognizedWorshipTypesTask() {
+  loadRecognizedWorshipTypesTask = task(async () => {
     // Trick used to avoid infinite loop
     // See https://github.com/NullVoxPopuli/ember-resources/issues/340 for more details
-    yield Promise.resolve();
+    await Promise.resolve();
 
-    let recognizedWorshipTypes = yield this.store.query(
+    let recognizedWorshipTypes = await this.store.query(
       'recognized-worship-type',
       { sort: 'label' }
     );
@@ -54,7 +53,7 @@ export default class RecognizedWorshipTypeSelect extends Component {
     }
 
     return recognizedWorshipTypes;
-  }
+  });
 
   isIdInBlacklist(id) {
     return CENTRAL_WORSHIP_SERVICE_BLACKLIST.find((element) => element == id);

@@ -25,53 +25,54 @@ export default class AdministrativeUnitsIndexRoute extends Route {
     };
   }
 
-  @keepLatestTask({ cancelOn: 'deactivate' })
-  *loadAdministrativeUnitsTask(params) {
-    let query = {
-      include: [
-        'classification',
-        'recognized-worship-type',
-        'organization-status',
-      ].join(),
-      page: {
-        number: params.page,
-        size: params.size,
-      },
-      sort: params.sort,
-    };
+  loadAdministrativeUnitsTask = keepLatestTask(
+    { cancelOn: 'deactivate' },
+    async (params) => {
+      let query = {
+        include: [
+          'classification',
+          'recognized-worship-type',
+          'organization-status',
+        ].join(),
+        page: {
+          number: params.page,
+          size: params.size,
+        },
+        sort: params.sort,
+      };
 
-    if (params.name) {
-      query['filter[name]'] = params.name;
-    }
+      if (params.name) {
+        query['filter[name]'] = params.name;
+      }
 
-    if (params.classificationId) {
-      query['filter[classification][:id:]'] = params.classificationId;
-    } else {
-      query['filter[classification][:id:]'] = [
-        CLASSIFICATION.WORSHIP_SERVICE.id,
-        CLASSIFICATION.CENTRAL_WORSHIP_SERVICE.id,
-      ].join();
-    }
+      if (params.classificationId) {
+        query['filter[classification][:id:]'] = params.classificationId;
+      } else {
+        query['filter[classification][:id:]'] = [
+          CLASSIFICATION.WORSHIP_SERVICE.id,
+          CLASSIFICATION.CENTRAL_WORSHIP_SERVICE.id,
+        ].join();
+      }
 
-    if (params.municipality) {
-      query['filter[primary-site][address][:exact:municipality]'] =
-        params.municipality;
-    }
+      if (params.municipality) {
+        query['filter[primary-site][address][:exact:municipality]'] =
+          params.municipality;
+      }
 
-    if (params.recognizedWorshipTypeId) {
-      query['filter[recognized-worship-type][:id:]'] =
-        params.recognizedWorshipTypeId;
-    }
+      if (params.recognizedWorshipTypeId) {
+        query['filter[recognized-worship-type][:id:]'] =
+          params.recognizedWorshipTypeId;
+      }
 
-    if (params.organizationStatus) {
-      query['filter[organization-status][:id:]'] = params.organizationStatus;
-    } else {
-      // We filter out non-active besturen
-      query[
-        'filter[organization-status][:id:]'
-      ] = `63cc561de9188d64ba5840a42ae8f0d6,abf4fee82019f88cf122f986830621ab`; // Actief or In oprichting
-    }
+      if (params.organizationStatus) {
+        query['filter[organization-status][:id:]'] = params.organizationStatus;
+      } else {
+        // We filter out non-active besturen
+        query['filter[organization-status][:id:]'] =
+          `63cc561de9188d64ba5840a42ae8f0d6,abf4fee82019f88cf122f986830621ab`; // Actief or In oprichting
+      }
 
-    return yield this.store.query('worship-administrative-unit', query);
-  }
+      return await this.store.query('worship-administrative-unit', query);
+    },
+  );
 }

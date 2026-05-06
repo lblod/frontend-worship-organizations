@@ -15,11 +15,10 @@ export default class ProvinceSelectComponent extends Component {
     this.args.selectedMunicipality,
   ]);
 
-  @task
-  *loadProvincesTask() {
+  loadProvincesTask = task(async () => {
     // Trick used to avoid infinite loop
     // See https://github.com/NullVoxPopuli/ember-resources/issues/340 for more details
-    yield Promise.resolve();
+    await Promise.resolve();
 
     let provinces = [];
     if (
@@ -37,7 +36,7 @@ export default class ProvinceSelectComponent extends Component {
       }
 
       // If a municipality is selected, load the province it belongs to
-      provinces = yield this.store.query('administrative-unit', {
+      provinces = await this.store.query('administrative-unit', {
         filter: {
           'sub-organizations': {
             ':exact:name': this.args.selectedMunicipality,
@@ -57,7 +56,7 @@ export default class ProvinceSelectComponent extends Component {
         },
         sort: 'name',
       };
-      provinces = yield this.store.query('administrative-unit', query);
+      provinces = await this.store.query('administrative-unit', query);
     }
 
     if (provinces.length === 1) {
@@ -69,5 +68,5 @@ export default class ProvinceSelectComponent extends Component {
       this.previousProvince = null;
     }
     return provinces.mapBy('name');
-  }
+  });
 }
