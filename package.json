@@ -29,7 +29,7 @@
     "test:ember": "ember test"
   },
   "devDependencies": {
-    "@appuniversum/ember-appuniversum": "^2.7.0",
+    "@appuniversum/ember-appuniversum": "^3.19.0",
     "@babel/core": "^7.25.2",
     "@babel/eslint-parser": "^7.25.1",
     "@babel/plugin-proposal-decorators": "^7.24.7",
@@ -79,14 +79,11 @@
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-qunit": "^8.1.2",
-    "husky": "^4.3.8",
-    "lint-staged": "^11.2.3",
     "loader.js": "^4.7.0",
     "prettier": "^3.3.3",
     "qunit": "^2.22.0",
     "qunit-dom": "^3.2.1",
     "release-it": "^14.12.4",
-    "release-it-lerna-changelog": "^4.0.1",
     "sass": "^1.49.7",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0",
@@ -100,18 +97,5 @@
   },
   "ember": {
     "edition": "octane"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.hbs": "ember-template-lint --fix"
-  },
-  "volta": {
-    "node": "16.13.2",
-    "npm": "8.3.1"
   }
 }

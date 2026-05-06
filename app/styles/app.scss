@@ -1,30 +1,10 @@
-/* ==================================
-   #APPUNIVERSUM
-   ================================== */
+@import "@appuniversum/ember-appuniversum/styles";
 
-/**
- * A design universe for Flanders GOV applications
- */
-
-/**
- * CONTENTS
- * ---
- * SETTINGS: Project settings and variables
- * TOOLS: Mixins
- * GENERIC: Reset, global box-sizing and font-styles
- * ELEMENTS: Plain html tag styling
- * OBJECTS: OOCSS unstyled objects (namespace: '.au-o-...')
- * COMPONENTS: Components (namespace: '.au-c-...')
- * UTILITIES: Single function helper classes (namespace: '.au-u-...')
- */
-
-/* EMBER-APPUNIVERSUM */
-@import 'ember-appuniversum';
-
-/* COMPONENTS */
+@import '@appuniversum/ember-appuniversum/styles/a-components';
 @import 'components/cards';
 @import 'components/sidebar-container';
 @import 'components/table-message';
+
 
 /* TEMPORARY HACKS AND QUICKFIXES */
 @import 'shame';
