@@ -8,6 +8,11 @@ module.exports = function (defaults) {
     'ember-simple-auth': {
       useSessionSetupMethod: true,
     },
+    emberData: {
+      deprecations: {
+        DEPRECATE_STORE_EXTENDS_EMBER_OBJECT: false,
+      },
+    },
     autoprefixer: {
       enabled: true,
       cascade: true,
