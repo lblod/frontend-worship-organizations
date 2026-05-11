@@ -98,7 +98,7 @@ export default class SensitivePersonalInformationService extends Service {
             ':id:': idList,
           },
         });
-        sensitiveInformation.nationalities = nationalities.toArray();
+        sensitiveInformation.nationalities = nationalities;
       }
     }
 
