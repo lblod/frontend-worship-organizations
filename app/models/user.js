@@ -5,7 +5,7 @@ export default class UserModel extends Model {
   @attr familyName;
 
   @hasMany('account', {
-    async: true,
+    async: false,
     inverse: 'user',
   })
   accounts;
