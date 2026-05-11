@@ -1,5 +1,4 @@
 import Service from '@ember/service';
-import fetch from 'fetch';
 import config from 'frontend-worship-organizations/config/environment';
 import { assert } from '@ember/debug';
 
