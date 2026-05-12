@@ -1,3 +1,8 @@
+## 1.3.0 (2026-05-12)
+
+#### :house: Internal
+* [#18](https://github.com/lblod/frontend-worship-organizations/pull/18) [OP-3643] ember upgrade 5.12 + appuniversum v4 ([@wolfderechter](https://github.com/wolfderechter))
+
 ## 1.2.6 (2026-04-17)
 
 #### :rocket: Enhancement
