@@ -25,15 +25,15 @@ export default class PeoplePersonPersonalInformationRequestSensitiveDataControll
     await this.sensitivePersonalInformation.getInformation(
       person,
       this.reasonCode,
-      administrativeUnitPersonType
+      administrativeUnitPersonType,
     );
     this.router.refresh();
     this.router.transitionTo(`${this.redirectUrl}`);
   }
 
-  @task *loadReasonCodes() {
-    return yield this.store.findAll('request-reason');
-  }
+  loadReasonCodes = task(async () => {
+    return await this.store.findAll('request-reason');
+  });
 
   reset() {
     this.reasonCode = null;

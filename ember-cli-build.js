@@ -8,11 +8,10 @@ module.exports = function (defaults) {
     'ember-simple-auth': {
       useSessionSetupMethod: true,
     },
-    sassOptions: {
-      sourceMapEmbed: true,
-      includePaths: [
-        'node_modules/@appuniversum/ember-appuniversum/app/styles',
-      ],
+    emberData: {
+      deprecations: {
+        DEPRECATE_STORE_EXTENDS_EMBER_OBJECT: false,
+      },
     },
     autoprefixer: {
       enabled: true,
@@ -20,13 +19,24 @@ module.exports = function (defaults) {
       sourcemap: true,
     },
     babel: {
-      plugins: [require.resolve('ember-auto-import/babel-plugin')],
-    },
-    // Disable chunk css fingerprinting until the config is included in ember-auto-import: https://github.com/ef4/ember-auto-import/pull/496
-    fingerprint: {
-      exclude: ['assets/chunk.*.css'],
+      plugins: [
+        require.resolve('ember-concurrency/async-arrow-task-transform'),
+      ],
     },
   });
 
-  return app.toTree();
+  const { Webpack } = require('@embroider/webpack');
+  return require('@embroider/compat').compatBuild(app, Webpack, {
+    staticAddonTestSupportTrees: true,
+    staticAddonTrees: true,
+    staticHelpers: true,
+    staticModifiers: true,
+    staticComponents: true,
+    staticEmberSource: true,
+    skipBabel: [
+      {
+        package: 'qunit',
+      },
+    ],
+  });
 };

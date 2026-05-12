@@ -34,23 +34,23 @@ Router.map(function () {
         { path: '/contactgegevens' },
         function () {
           this.route('request-sensitive-data');
-        }
+        },
       );
       this.route('positions', { path: '/posities' }, function () {
         this.route(
           'mandatory',
           { path: '/mandataris/:mandatoryId/' },
-          function () {}
+          function () {},
         );
         this.route(
           'minister',
           { path: '/bedienaar/:ministerId/' },
-          function () {}
+          function () {},
         );
         this.route(
           'agent',
           { path: '/functionaris/:agentId/' },
-          function () {}
+          function () {},
         );
       });
     });
@@ -70,13 +70,13 @@ Router.map(function () {
               function () {
                 this.route('board-member', { path: '/bestuurslid' });
                 this.route('mandatory', { path: '/mandataris' });
-              }
+              },
             );
-          }
+          },
         );
         this.route('ministers', { path: '/bedienaren' });
       });
-    }
+    },
   );
   this.route('legal', { path: '/legaal' }, function () {
     this.route('disclaimer');

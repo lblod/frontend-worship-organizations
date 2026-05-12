@@ -1,16 +1,12 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { task } from 'ember-concurrency';
-import { trackedTask } from 'ember-resources/util/ember-concurrency';
+import { trackedTask } from 'reactiveweb/ember-concurrency';
 import { CENTRAL_WORSHIP_SERVICE_BLACKLIST } from 'frontend-worship-organizations/models/recognized-worship-type';
 import { CLASSIFICATION_CODE } from 'frontend-worship-organizations/models/administrative-unit-classification-code';
 
 export default class ClassificationSelectComponent extends Component {
   @service store;
-
-  classifications = trackedTask(this, this.loadClassificationsTask, () => [
-    this.args.selectedRecognizedWorshipTypeId,
-  ]);
 
   get selectedClassification() {
     if (typeof this.args.selected === 'string') {
@@ -29,10 +25,10 @@ export default class ClassificationSelectComponent extends Component {
     return classifications.find((status) => status.id === id);
   }
 
-  @task *loadClassificationsTask() {
+  loadClassificationsTask = task(async () => {
     // Trick used to avoid infinite loop
     // See https://github.com/NullVoxPopuli/ember-resources/issues/340 for more details
-    yield Promise.resolve();
+    await Promise.resolve();
 
     let allowedIds;
     let selectedRecognizedWorshipTypeId =
@@ -50,13 +46,17 @@ export default class ClassificationSelectComponent extends Component {
       ];
     }
 
-    return yield this.store.query('administrative-unit-classification-code', {
+    return await this.store.query('administrative-unit-classification-code', {
       'filter[:id:]': allowedIds.join(),
       sort: 'label',
     });
-  }
+  });
 
   isIdInBlacklist(id) {
     return CENTRAL_WORSHIP_SERVICE_BLACKLIST.find((element) => element == id);
   }
+
+  classifications = trackedTask(this, this.loadClassificationsTask, () => [
+    this.args.selectedRecognizedWorshipTypeId,
+  ]);
 }

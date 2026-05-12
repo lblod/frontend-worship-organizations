@@ -28,11 +28,11 @@ export default class OrganizationStatusSelectComponent extends Component {
     return organizationStatuses.find((status) => status.id === id);
   }
 
-  @task *loadOrganizationStatusesTask() {
-    const statuses = yield this.store.findAll('organization-status-code');
+  loadOrganizationStatusesTask = task(async () => {
+    const statuses = await this.store.findAll('organization-status-code');
     // We hide non active besturen
     return statuses.filter(
-      (status) => status.id != 'd02c4e12bf88d2fdf5123b07f29c9311'
+      (status) => status.id != 'd02c4e12bf88d2fdf5123b07f29c9311',
     );
-  }
+  });
 }

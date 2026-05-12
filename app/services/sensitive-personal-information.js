@@ -1,6 +1,5 @@
 import Service, { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import fetch from 'fetch';
 
 const PRIVACY_CENTRIC_SERVICE_ENDPOINT = {
   REQUEST: '/person-information-requests',
@@ -65,7 +64,7 @@ export default class SensitivePersonalInformationService extends Service {
 
     let response = await this._request(
       PRIVACY_CENTRIC_SERVICE_ENDPOINT.REQUEST,
-      body
+      body,
     );
     let data = (await response.json()).data;
     let sensitiveInfo = await this.mapSensitivePersonalInformation(data);
@@ -99,7 +98,7 @@ export default class SensitivePersonalInformationService extends Service {
             ':id:': idList,
           },
         });
-        sensitiveInformation.nationalities = nationalities.toArray();
+        sensitiveInformation.nationalities = nationalities;
       }
     }
 

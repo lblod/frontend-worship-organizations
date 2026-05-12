@@ -7,7 +7,7 @@ export default class AdministrativeUnitsAdministrativeUnitGoverningBodiesRoute e
 
   async model() {
     let { id: administrativeUnitId } = this.paramsFor(
-      'administrative-units.administrative-unit'
+      'administrative-units.administrative-unit',
     );
 
     let administrativeUnit = await this.store.findRecord(
@@ -15,7 +15,7 @@ export default class AdministrativeUnitsAdministrativeUnitGoverningBodiesRoute e
       administrativeUnitId,
       {
         reload: true,
-      }
+      },
     );
 
     let untimedGoverningBodies = await administrativeUnit.governingBodies;

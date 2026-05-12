@@ -6,7 +6,7 @@ export default class AdministrativeUnitsAdministrativeUnitMinistersRoute extends
 
   async model() {
     let { id: administrativeUnitId } = this.paramsFor(
-      'administrative-units.administrative-unit'
+      'administrative-units.administrative-unit',
     );
 
     let administrativeUnit = await this.store.findRecord(
@@ -14,7 +14,7 @@ export default class AdministrativeUnitsAdministrativeUnitMinistersRoute extends
       administrativeUnitId,
       {
         reload: true,
-      }
+      },
     );
 
     let ministerPositions = await administrativeUnit.ministerPositions;

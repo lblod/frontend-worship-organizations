@@ -16,8 +16,10 @@ export default class PublicInvolvementModel extends Model {
   worshipService;
 
   @belongsTo('administrative-unit', {
-    async: true,
     inverse: 'involvedBoards',
+    async: true,
+    polymorphic: true,
+    as: 'local-involvement',
   })
   administrativeUnit;
 }

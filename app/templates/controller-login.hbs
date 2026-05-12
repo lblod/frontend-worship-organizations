@@ -30,7 +30,9 @@
 
         <MockLogin as |login|>
           {{#if this.queryStore.isRunning}}
-            <AuLoader @padding="small" />
+              <AuLoader class="au-o-region">
+                Accounts aan het laden
+              </AuLoader>
           {{else}}
             {{#if login.errorMessage}}
               <AuAlert

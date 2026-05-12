@@ -25,8 +25,7 @@ export default class AdministrativeUnitsIndexRoute extends Route {
     };
   }
 
-  @keepLatestTask({ cancelOn: 'deactivate' })
-  *loadAdministrativeUnitsTask(params) {
+  loadAdministrativeUnitsTask = keepLatestTask(async (params) => {
     let query = {
       include: [
         'classification',
@@ -67,11 +66,10 @@ export default class AdministrativeUnitsIndexRoute extends Route {
       query['filter[organization-status][:id:]'] = params.organizationStatus;
     } else {
       // We filter out non-active besturen
-      query[
-        'filter[organization-status][:id:]'
-      ] = `63cc561de9188d64ba5840a42ae8f0d6,abf4fee82019f88cf122f986830621ab`; // Actief or In oprichting
+      query['filter[organization-status][:id:]'] =
+        `63cc561de9188d64ba5840a42ae8f0d6,abf4fee82019f88cf122f986830621ab`; // Actief or In oprichting
     }
 
-    return yield this.store.query('worship-administrative-unit', query);
-  }
+    return await this.store.query('worship-administrative-unit', query);
+  });
 }

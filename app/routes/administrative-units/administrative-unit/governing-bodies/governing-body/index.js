@@ -16,7 +16,7 @@ export default class AdministrativeUnitsAdministrativeUnitGoverningBodiesGoverni
   async model(params) {
     let { administrativeUnit, governingBodyClassification, governingBody } =
       this.modelFor(
-        'administrative-units.administrative-unit.governing-bodies.governing-body'
+        'administrative-units.administrative-unit.governing-bodies.governing-body',
       );
 
     let query = {

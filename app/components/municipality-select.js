@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { task } from 'ember-concurrency';
 import { CLASSIFICATION_CODE } from 'frontend-worship-organizations/models/administrative-unit-classification-code';
-import { trackedTask } from 'ember-resources/util/ember-concurrency';
+import { trackedTask } from 'reactiveweb/ember-concurrency';
 
 export default class MunicipalitySelectComponent extends Component {
   @service store;
@@ -11,15 +11,14 @@ export default class MunicipalitySelectComponent extends Component {
     this.args.selectedProvince,
   ]);
 
-  @task
-  *loadMunicipalitiesTask() {
+  loadMunicipalitiesTask = task(async () => {
     // Trick used to avoid infinite loop
     // See https://github.com/NullVoxPopuli/ember-resources/issues/340 for more details
-    yield Promise.resolve();
+    await Promise.resolve();
 
     if (this.args.selectedProvince && this.args.selectedProvince.length) {
       // If a province is selected, load the municipalities in it
-      let municipalities = yield this.store.query('administrative-unit', {
+      let municipalities = await this.store.query('administrative-unit', {
         filter: {
           'is-sub-organization-of': {
             ':exact:name': this.args.selectedProvince,
@@ -49,7 +48,7 @@ export default class MunicipalitySelectComponent extends Component {
         },
       };
 
-      return yield this.store.query('administrative-unit', query);
+      return await this.store.query('administrative-unit', query);
     }
-  }
+  });
 }

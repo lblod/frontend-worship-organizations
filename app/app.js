@@ -3,6 +3,7 @@ import Resolver from 'ember-resolver';
 import loadInitializers from 'ember-load-initializers';
 import config from 'frontend-worship-organizations/config/environment';
 import './config/custom-inflector-rules';
+import { silenceEmptySyncRelationshipWarnings } from './utils/ember-data';
 
 export default class App extends Application {
   modulePrefix = config.modulePrefix;
@@ -10,4 +11,5 @@ export default class App extends Application {
   Resolver = Resolver;
 }
 
+silenceEmptySyncRelationshipWarnings();
 loadInitializers(App, config.modulePrefix);

@@ -1,3 +1,4 @@
+/* eslint-disable qunit/require-expect */
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import RedirectHandler from 'frontend-worship-organizations/redirect-handlers/redirect-handler';
@@ -21,7 +22,7 @@ module('Unit | Service | deep-link', function (hooks) {
           assert.strictEqual(uuid, '12345');
           assert.strictEqual(resourceUri, 'http://data.test/12345');
         }
-      }
+      },
     );
 
     this.owner.register(
@@ -41,7 +42,7 @@ module('Unit | Service | deep-link', function (hooks) {
             ],
           };
         }
-      }
+      },
     );
 
     await deepLink.redirect('http://data.test/12345');
