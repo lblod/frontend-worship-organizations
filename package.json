@@ -84,7 +84,7 @@
     "qunit": "^2.22.0",
     "qunit-dom": "^3.2.1",
     "reactiveweb": "^1.9.1",
-    "release-it": "^14.12.4",
+    "release-it": "^17.10.10",
     "sass": "^1.49.7",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0",
