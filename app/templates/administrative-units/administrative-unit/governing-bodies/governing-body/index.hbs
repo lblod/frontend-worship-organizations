@@ -89,7 +89,8 @@
               @label="Mandaat"
             />
             <th class="au-c-data-table__header-title">Start mandaat</th>
-            <th class="au-c-data-table__header-title">Einde mandaat</th>
+            <th class="au-c-data-table__header-title">Geplande einddatum</th>
+            <th class="au-c-data-table__header-title">Einddatum </th>
           </c.header>
           <c.body as |mandatory|>
             <td>
@@ -122,10 +123,13 @@
               {{/if}}
             </td>
             <td>
+              {{#if mandatory.expectedEndDate}}
+                {{date-format mandatory.expectedEndDate}}
+              {{/if}}
+            </td>
+            <td>
               {{#if mandatory.endDate}}
                 {{date-format mandatory.endDate}}
-              {{else if mandatory.expectedEndDate}}
-                {{date-format mandatory.expectedEndDate}}
               {{/if}}
             </td>
           </c.body>
@@ -162,7 +166,8 @@
               @label="Mandaat"
             />
             <th class="au-c-data-table__header-title">Start mandaat</th>
-            <th class="au-c-data-table__header-title">Einde mandaat</th>
+            <th class="au-c-data-table__header-title">Geplande einddatum</th>
+            <th class="au-c-data-table__header-title">Einddatum</th>
           </c.header>
           <c.body as |mandatory|>
             <td>
@@ -195,10 +200,13 @@
               {{/if}}
             </td>
             <td>
+              {{#if mandatory.expectedEndDate}}
+                {{date-format mandatory.expectedEndDate}}
+              {{/if}}
+            </td>
+            <td>
               {{#if mandatory.endDate}}
                 {{date-format mandatory.endDate}}
-              {{else if mandatory.expectedEndDate}}
-                {{date-format mandatory.expectedEndDate}}
               {{/if}}
             </td>
           </c.body>
