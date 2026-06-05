@@ -1,3 +1,8 @@
+## 1.4.0 (2026-06-05)
+
+#### :rocket: Enhancement
+* [#19](https://github.com/lblod/frontend-worship-organizations/pull/19) [OP-3809] Add a "einddatum" column to the governing body details page ([@Windvis](https://github.com/Windvis))
+
 ## 1.3.0 (2026-05-12)
 
 #### :house: Internal
