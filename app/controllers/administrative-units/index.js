@@ -23,7 +23,7 @@ export default class AdministrativeUnitsIndexController extends Controller {
   size = 20;
   @tracked sort = 'name';
   @tracked name = null;
-  @tracked municipality = '';
+  @tracked municipality = null;
   @tracked classificationId = '';
   @tracked recognizedWorshipTypeId = '';
   @tracked organizationStatus = '';
@@ -143,7 +143,7 @@ export default class AdministrativeUnitsIndexController extends Controller {
     if (selection !== null) {
       this.municipality = selection.name;
     } else {
-      this.municipality = '';
+      this.municipality = null;
     }
   }
 
@@ -153,8 +153,8 @@ export default class AdministrativeUnitsIndexController extends Controller {
 
   @action
   resetFilters() {
-    this.name = '';
-    this.municipality = '';
+    this.name = null;
+    this.municipality = null;
     this.classificationId = '';
     this.recognizedWorshipTypeId = '';
     this.organizationStatus = '';
