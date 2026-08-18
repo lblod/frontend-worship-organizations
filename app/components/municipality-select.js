@@ -7,10 +7,6 @@ import { trackedTask } from 'reactiveweb/ember-concurrency';
 export default class MunicipalitySelectComponent extends Component {
   @service store;
 
-  municipalities = trackedTask(this, this.loadMunicipalitiesTask, () => [
-    this.args.selectedProvince,
-  ]);
-
   loadMunicipalitiesTask = task(async () => {
     // Trick used to avoid infinite loop
     // See https://github.com/NullVoxPopuli/ember-resources/issues/340 for more details
@@ -51,4 +47,8 @@ export default class MunicipalitySelectComponent extends Component {
       return await this.store.query('administrative-unit', query);
     }
   });
+
+  municipalities = trackedTask(this, this.loadMunicipalitiesTask, () => [
+    this.args.selectedProvince,
+  ]);
 }
