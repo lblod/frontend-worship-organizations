@@ -11,10 +11,6 @@ export default class ProvinceSelectComponent extends Component {
   @tracked previousMunicipality;
   @tracked previousProvince;
 
-  provinces = trackedTask(this, this.loadProvincesTask, () => [
-    this.args.selectedMunicipality,
-  ]);
-
   loadProvincesTask = task(async () => {
     // Trick used to avoid infinite loop
     // See https://github.com/NullVoxPopuli/ember-resources/issues/340 for more details
@@ -69,4 +65,8 @@ export default class ProvinceSelectComponent extends Component {
     }
     return provinces.mapBy('name');
   });
+
+  provinces = trackedTask(this, this.loadProvincesTask, () => [
+    this.args.selectedMunicipality,
+  ]);
 }
