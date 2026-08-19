@@ -1,3 +1,11 @@
+## 1.4.1 (2026-08-19)
+
+#### :bug: Bug Fix
+* [#20](https://github.com/lblod/frontend-worship-organizations/pull/20) [DL-7505] Fix blank bestuurseenheden page for ROs and provinces ([@claire-lovisa](https://github.com/claire-lovisa))
+
+#### Committers: 1
+- Claire Lovisa ([@claire-lovisa](https://github.com/claire-lovisa))
+
 ## 1.4.0 (2026-06-05)
 
 #### :rocket: Enhancement
